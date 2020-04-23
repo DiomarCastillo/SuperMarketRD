@@ -42,8 +42,8 @@
 			
 			
 			<?php
-				include("modal/registro_clientes.php");
-				include("modal/editar_clientes.php");
+				include("modal/registro_proveedores.php");
+				include("modal/editar_proveedores.php");
 			?>
 			<form class="form-horizontal" role="form" id="datos_cotizacion">
 				
