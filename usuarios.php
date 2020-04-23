@@ -13,7 +13,10 @@
 	$active_productos="";
 	$active_clientes="";
 	$active_usuarios="active";	
-	$title="Usuarios | Simple Invoice";
+	$active_proveedores="";
+    $active_compras="";
+    $active_reportes="";
+	$title="Usuarios | SuperMarketRD";
 ?>
 <!DOCTYPE html>
 <html lang="en">

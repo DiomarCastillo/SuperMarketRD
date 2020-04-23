@@ -12,12 +12,12 @@
 	
 	$active_facturas="";
 	$active_productos="";
-	$active_clientes="active";
-	$active_usuarios="";	
-	$active_proveedores="";
+	$active_clientes="";
+    $active_usuarios="";	
+    $active_proveedores="active";
     $active_compras="";
     $active_reportes="";
-	$title="Clientes | SuperMarketRD";
+	$title="Proveedores | SuperMarketRD";
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -33,9 +33,9 @@
 	<div class="panel panel-info">
 		<div class="panel-heading">
 		    <div class="btn-group pull-right">
-				<button type='button' class="btn btn-info" data-toggle="modal" data-target="#nuevoCliente"><span class="glyphicon glyphicon-plus" ></span> Nuevo Cliente</button>
+				<button type='button' class="btn btn-info" data-toggle="modal" data-target="#nuevoCliente"><span class="glyphicon glyphicon-plus" ></span> Nuevo Proveedor</button>
 			</div>
-			<h4><i class='glyphicon glyphicon-search'></i> Buscar Clientes</h4>
+			<h4><i class='glyphicon glyphicon-search'></i> Buscar Proveedores</h4>
 		</div>
 		<div class="panel-body">
 		
@@ -48,9 +48,9 @@
 			<form class="form-horizontal" role="form" id="datos_cotizacion">
 				
 						<div class="form-group row">
-							<label for="q" class="col-md-2 control-label">Cliente</label>
+							<label for="q" class="col-md-2 control-label">Proveedor</label>
 							<div class="col-md-5">
-								<input type="text" class="form-control" id="q" placeholder="Nombre del cliente" onkeyup='load(1);'>
+								<input type="text" class="form-control" id="q" placeholder="Nombre del proveedor" onkeyup='load(1);'>
 							</div>
 							<div class="col-md-3">
 								<button type="button" class="btn btn-default" onclick='load(1);'>

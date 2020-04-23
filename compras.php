@@ -6,14 +6,14 @@
 		exit;
         }
 	
-	$active_facturas="active";
+	$active_facturas="";
 	$active_productos="";
 	$active_clientes="";
-	$active_usuarios="";	
-	$active_proveedores="";
-	$active_compras="";
-	$active_reportes="";	
-	$title="Facturas | SuperMarketRD";
+    $active_usuarios="";
+    $active_proveedores="";
+    $active_compras="active";
+    $active_reportes="";	
+	$title="Compras | SuperMarketRD";
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -29,17 +29,17 @@
 		<div class="panel panel-info">
 		<div class="panel-heading">
 		    <div class="btn-group pull-right">
-				<a  href="nueva_factura.php" class="btn btn-info"><span class="glyphicon glyphicon-plus" ></span> Nueva Factura</a>
+				<a  href="nueva_factura.php" class="btn btn-info"><span class="glyphicon glyphicon-plus" ></span> Nueva Compra</a>
 			</div>
-			<h4><i class='glyphicon glyphicon-search'></i> Buscar Facturas</h4>
+			<h4><i class='glyphicon glyphicon-search'></i> Buscar Compras</h4>
 		</div>
 			<div class="panel-body">
 				<form class="form-horizontal" role="form" id="datos_cotizacion">
 				
 						<div class="form-group row">
-							<label for="q" class="col-md-2 control-label">Cliente o # de factura</label>
+							<label for="q" class="col-md-2 control-label">Proveedores o # de factura</label>
 							<div class="col-md-5">
-								<input type="text" class="form-control" id="q" placeholder="Nombre del cliente o # de factura" onkeyup='load(1);'>
+								<input type="text" class="form-control" id="q" placeholder="Nombre del proveedores o # de factura" onkeyup='load(1);'>
 							</div>
 							
 							

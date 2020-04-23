@@ -5,12 +5,12 @@
         header("location: login.php");
 		exit;
         }
-	$active_facturas="active";
+	$active_facturas="";
 	$active_productos="";
 	$active_clientes="";
 	$active_usuarios=""; 
 	$active_proveedores="";
-	$active_compras="";
+	$active_compras="active";
 	$active_reportes="";		
 	$title="Nueva Factura | SuperMarketRD";
 	
@@ -30,7 +30,7 @@
     <div class="container">
 	<div class="panel panel-info">
 		<div class="panel-heading">
-			<h4><i class='glyphicon glyphicon-edit'></i> Nueva Factura</h4>
+			<h4><i class='glyphicon glyphicon-edit'></i> Nueva Compra</h4>
 		</div>
 		<div class="panel-body">
 		<?php 
@@ -40,9 +40,9 @@
 		?>
 			<form class="form-horizontal" role="form" id="datos_factura">
 				<div class="form-group row">
-				  <label for="nombre_cliente" class="col-md-1 control-label">Cliente</label>
+				  <label for="nombre_cliente" class="col-md-1 control-label">Proveedor</label>
 				  <div class="col-md-3">
-					  <input type="text" class="form-control input-sm" id="nombre_cliente" placeholder="Selecciona un cliente" required>
+					  <input type="text" class="form-control input-sm" id="nombre_cliente" placeholder="Selecciona un proveedor" required>
 					  <input id="id_cliente" type='hidden'>	
 				  </div>
 				  <label for="tel1" class="col-md-1 control-label">Teléfono</label>

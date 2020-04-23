@@ -9,7 +9,10 @@
 	$active_productos="";
 	$active_clientes="";
 	$active_usuarios="";	
-	$title="Editar Factura | Simple Invoice";
+	$active_proveedores="";
+	$active_compras="";
+	$active_reportes="";
+	$title="Editar Factura | SuperMarketRD";
 	
 	/* Connect To Database*/
 	require_once ("config/db.php");//Contiene las variables de configuracion para conectar a la base de datos

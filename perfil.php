@@ -13,8 +13,11 @@
 	$active_productos="";
 	$active_clientes="";
 	$active_usuarios="";	
+	$active_proveedores="";
+	$active_compras="";
+	$active_reportes="";
 	$active_perfil="active";	
-	$title="Configuración | Simple Invoice";
+	$title="Configuración | SuperMarketRD";
 	
 	$query_empresa=mysqli_query($con,"select * from perfil where id_perfil=1");
 	$row=mysqli_fetch_array($query_empresa);
@@ -72,32 +75,10 @@
                         <td><input type="email" class="form-control input-sm" name="email" value="<?php echo $row['email']?>" ></td>
                       </tr>
 					  <tr>
-                        <td>IVA (%):</td>
+                        <td>ITBIS (%):</td>
                         <td><input type="text" class="form-control input-sm" required name="impuesto" value="<?php echo $row['impuesto']?>"></td>
                       </tr>
-					  <tr>
-                        <td>Simbolo de moneda:</td>
-                        <td>
-							<select class='form-control input-sm' name="moneda" required>
-										<?php 
-											$sql="select name, symbol from  currencies group by symbol order by name ";
-											$query=mysqli_query($con,$sql);
-											while($rw=mysqli_fetch_array($query)){
-												$simbolo=$rw['symbol'];
-												$moneda=$rw['name'];
-												if ($row['moneda']==$simbolo){
-													$selected="selected";
-												} else {
-													$selected="";
-												}
-												?>
-												<option value="<?php echo $simbolo;?>" <?php echo $selected;?>><?php echo ($simbolo);?></option>
-												<?php
-											}
-										?>
-							</select>
-						</td>
-                      </tr>
+				
 					  <tr>
                         <td>Dirección:</td>
                         <td><input type="text" class="form-control input-sm" name="direccion" value="<?php echo $row["direccion"];?>" required></td>

@@ -64,9 +64,9 @@ $simbolo_moneda=get_row('perfil','moneda', 'id_perfil', 1);
 	}
 	$impuesto=get_row('perfil','impuesto', 'id_perfil', 1);
 	$subtotal=number_format($sumador_total,2,'.','');
-	$total_iva=($subtotal * $impuesto )/100;
-	$total_iva=number_format($total_iva,2,'.','');
-	$total_factura=$subtotal+$total_iva;
+	$total_itbis=($subtotal * $impuesto )/100;
+	$total_itbis=number_format($total_itbis,2,'.','');
+	$total_factura=$subtotal+$total_itbis;
 
 ?>
 <tr>
@@ -75,12 +75,22 @@ $simbolo_moneda=get_row('perfil','moneda', 'id_perfil', 1);
 	<td></td>
 </tr>
 <tr>
-	<td class='text-right' colspan=4>IVA (<?php echo $impuesto;?>)% <?php echo $simbolo_moneda;?></td>
-	<td class='text-right'><?php echo number_format($total_iva,2);?></td>
+	<td class='text-right' colspan=4>ITBIS (<?php echo $impuesto;?>)% <?php echo $simbolo_moneda;?></td>
+	<td class='text-right'><?php echo number_format($total_itbis,2);?></td>
 	<td></td>
 </tr>
 <tr>
 	<td class='text-right' colspan=4>TOTAL <?php echo $simbolo_moneda;?></td>
+	<td class='text-right'><?php echo number_format($total_factura,2);?></td>
+	<td></td>
+</tr>
+<tr>
+	<td class='text-right' colspan=4>PAGO <?php echo $simbolo_moneda;?></td>
+	<td class='text-right'><?php echo number_format($total_factura,2);?></td>
+	<td></td>
+</tr>
+<tr>
+	<td class='text-right' colspan=4>CAMBIO <?php echo $simbolo_moneda;?></td>
 	<td class='text-right'><?php echo number_format($total_factura,2);?></td>
 	<td></td>
 </tr>
