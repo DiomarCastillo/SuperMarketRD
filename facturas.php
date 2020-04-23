@@ -1,9 +1,5 @@
 <?php
-	/*-------------------------
-	Autor: INNOVAWEBSV
-	Web: www.innovawebsv.com
-	Mail: info@innovawebsv.com
-	---------------------------*/
+
 	session_start();
 	if (!isset($_SESSION['user_login_status']) AND $_SESSION['user_login_status'] != 1) {
         header("location: login.php");
