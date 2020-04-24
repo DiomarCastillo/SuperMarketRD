@@ -49,14 +49,14 @@ table.page_footer {width: 100%; border: none; background-color: white; padding: 
             </tr>
         </table>
     </page_footer>
-    <?php include("encabezado_factura.php");?>
+    <?php include("encabezado_compra.php");?>
     <br>
     
 
 	
     <table cellspacing="0" style="width: 100%; text-align: left; font-size: 11pt;">
         <tr>
-           <td style="width:50%;" class='midnight-blue'>FACTURAR A</td>
+           <td style="width:50%;" class='midnight-blue'>compraR A</td>
         </tr>
 		<tr>
            <td style="width:50%;" >
@@ -154,7 +154,7 @@ while ($row=mysqli_fetch_array($sql))
 
 	<?php 
 	//Insert en la tabla detalle_cotizacion
-	$insert_detail=mysqli_query($con, "INSERT INTO detalle_factura VALUES ('','$numero_factura','$id_producto','$cantidad','$precio_venta_r')");
+	$insert_detail=mysqli_query($con, "INSERT INTO detalle_compra VALUES ('','$numero_compra','$id_producto','$cantidad','$precio_venta_r')");
 	
 	$nums++;
 	}
@@ -162,7 +162,7 @@ while ($row=mysqli_fetch_array($sql))
 	$subtotal=number_format($sumador_total,2,'.','');
 	$total_iva=($subtotal * $impuesto )/100;
 	$total_iva=number_format($total_iva,2,'.','');
-	$total_factura=$subtotal+$total_iva;
+	$total_compra=$subtotal+$total_iva;
 ?>
 	  
         <tr>
@@ -174,22 +174,14 @@ while ($row=mysqli_fetch_array($sql))
             <td style="widtd: 15%; text-align: right;"> <?php echo number_format($total_iva,2);?></td>
         </tr><tr>
             <td colspan="3" style="widtd: 85%; text-align: right;">TOTAL <?php echo $simbolo_moneda;?> </td>
-            <td style="widtd: 15%; text-align: right;"> <?php echo number_format($total_factura,2);?></td>
+            <td style="widtd: 15%; text-align: right;"> <?php echo number_format($total_compra,2);?></td>
         </tr>
     </table>
-	
-	
-	
 	<br>
 	<div style="font-size:11pt;text-align:center;font-weight:bold">Gracias por su compra!</div>
-	
-	
-	  
-
 </page>
-
 <?php
 $date=date("Y-m-d H:i:s");
-$insert=mysqli_query($con,"INSERT INTO facturas VALUES (NULL,'$numero_factura','$date','$id_cliente','$id_vendedor','$condiciones','$total_factura','1')");
+$insert=mysqli_query($con,"INSERT INTO compras VALUES (NULL,'$numero_compra','$date','$id_cliente','$id_vendedor','$condiciones','$total_compra','1')");
 $delete=mysqli_query($con,"DELETE FROM tmp WHERE session_id='".$session_id."'");
 ?>

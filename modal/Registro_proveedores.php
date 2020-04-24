@@ -3,7 +3,7 @@
 		{
 	?>
 	<!-- Modal -->
-	<div class="modal fade" id="nuevoCliente" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	<div class="modal fade" id="nuevoProveedor" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 	  <div class="modal-dialog" role="document">
 		<div class="modal-content">
 		  <div class="modal-header">
@@ -41,21 +41,6 @@
 				  
 				</div>
 			  </div>
-			  
-			  <div class="form-group">
-				<label for="estado" class="col-sm-3 control-label">Estado</label>
-				<div class="col-sm-8">
-				 <select class="form-control" id="estado" name="estado" required>
-					<option value="">-- Selecciona estado --</option>
-					<option value="1" selected>Activo</option>
-					<option value="0">Inactivo</option>
-				  </select>
-				</div>
-			  </div>
-			 
-			 
-			 
-			
 		  </div>
 		  <div class="modal-footer">
 			<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>

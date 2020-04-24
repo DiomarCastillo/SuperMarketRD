@@ -39,21 +39,6 @@
 				  <textarea class="form-control" id="mod_direccion" name="mod_direccion" ></textarea>
 				</div>
 			  </div>
-			  
-			  <div class="form-group">
-				<label for="mod_estado" class="col-sm-3 control-label">Estado</label>
-				<div class="col-sm-8">
-				 <select class="form-control" id="mod_estado" name="mod_estado" required>
-					<option value="">-- Selecciona estado --</option>
-					<option value="1" selected>Activo</option>
-					<option value="0">Inactivo</option>
-				  </select>
-				</div>
-			  </div>
-			 
-			 
-			 
-			
 		  </div>
 		  <div class="modal-footer">
 			<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>

@@ -67,5 +67,6 @@
 	?>
 	<script type="text/javascript" src="js/VentanaCentrada.js"></script>
 	<script type="text/javascript" src="js/facturas.js"></script>
+	<script type="text/javascript" src="js/compras.js"></script>
   </body>
 </html>

@@ -61,15 +61,15 @@ table.page_footer {width: 100%; border: none; background-color: white; padding: 
 		<tr>
            <td style="width:50%;" >
 			<?php 
-				$sql_cliente=mysqli_query($con,"select * from clientes where id_cliente='$id_cliente'");
-				$rw_cliente=mysqli_fetch_array($sql_cliente);
-				echo $rw_cliente['nombre_cliente'];
+				$sql_proveedor=mysqli_query($con,"select * from proveedores where id_proveedor='$id_proveedor'");
+				$rw_proveedor=mysqli_fetch_array($sql_proveedor);
+				echo $rw_proveedor['nombre_proveedor'];
 				echo "<br>";
-				echo $rw_cliente['direccion_cliente'];
+				echo $rw_proveedor['direccion_proveedor'];
 				echo "<br> Teléfono: ";
-				echo $rw_cliente['telefono_cliente'];
+				echo $rw_proveedor['telefono_proveedor'];
 				echo "<br> Email: ";
-				echo $rw_cliente['email_cliente'];
+				echo $rw_proveedor['email_proveedor'];
 			?>
 			
 		   </td>
@@ -121,7 +121,7 @@ table.page_footer {width: 100%; border: none; background-color: white; padding: 
 <?php
 $nums=1;
 $sumador_total=0;
-$sql=mysqli_query($con, "select * from products, detalle_factura, facturas where products.id_producto=detalle_factura.id_producto and detalle_factura.numero_factura=facturas.numero_factura and facturas.id_factura='".$id_factura."'");
+$sql=mysqli_query($con, "select * from productos, detalle_factura, facturas where productos.id_producto=detalle_factura.id_producto and detalle_factura.numero_factura=facturas.numero_factura and facturas.id_factura='".$id_factura."'");
 
 while ($row=mysqli_fetch_array($sql))
 	{

@@ -1,8 +1,8 @@
 <?php
 	
 include('is_logged.php');//Archivo verifica que el usario que intenta acceder a la URL esta logueado
-$id_factura= $_SESSION['id_factura'];
-$numero_factura= $_SESSION['numero_factura'];
+$id_compra= $_SESSION['id_compra'];
+$numero_compra= $_SESSION['numero_compra'];
 if (isset($_POST['id'])){$id=intval($_POST['id']);}
 if (isset($_POST['cantidad'])){$cantidad=intval($_POST['cantidad']);}
 if (isset($_POST['precio_venta'])){$precio_venta=floatval($_POST['precio_venta']);}
@@ -14,13 +14,13 @@ if (isset($_POST['precio_venta'])){$precio_venta=floatval($_POST['precio_venta']
 	include("../funciones.php");
 if (!empty($id) and !empty($cantidad) and !empty($precio_venta))
 {
-$insert_tmp=mysqli_query($con, "INSERT INTO detalle_factura (numero_factura, id_producto,cantidad,precio_venta) VALUES ('$numero_factura','$id','$cantidad','$precio_venta')");
+$insert_tmp=mysqli_query($con, "INSERT INTO detalle_compra (numero_compra, id_producto,cantidad,precio_venta) VALUES ('$numero_compra','$id','$cantidad','$precio_venta')");
 
 }
 if (isset($_GET['id']))//codigo elimina un elemento del array
 {
 $id_detalle=intval($_GET['id']);	
-$delete=mysqli_query($con, "DELETE FROM detalle_factura WHERE id_detalle='".$id_detalle."'");
+$delete=mysqli_query($con, "DELETE FROM detalle_compra WHERE id_detalle='".$id_detalle."'");
 }
 $simbolo_moneda="$";
 ?>
@@ -35,7 +35,7 @@ $simbolo_moneda="$";
 </tr>
 <?php
 	$sumador_total=0;
-	$sql=mysqli_query($con, "select * from productos, facturas, detalle_factura where facturas.numero_factura=detalle_factura.numero_factura and  facturas.id_factura='$id_factura' and productos.id_producto=detalle_factura.id_producto");
+	$sql=mysqli_query($con, "select * from productos, compras, detalle_compra where compras.numero_compra=detalle_compra.numero_compra and  compras.id_compra='$id_compra' and productos.id_producto=detalle_compra.id_producto");
 	while ($row=mysqli_fetch_array($sql))
 	{
 	$id_detalle=$row["id_detalle"];
@@ -67,8 +67,8 @@ $simbolo_moneda="$";
 	$subtotal=number_format($sumador_total,2,'.','');
 	$total_iva=($subtotal * $impuesto )/100;
 	$total_iva=number_format($total_iva,2,'.','');
-	$total_factura=$subtotal+$total_iva;
-	$update=mysqli_query($con,"update facturas set total_venta='$total_factura' where id_factura='$id_factura'");
+	$total_compra=$subtotal+$total_iva;
+	$update=mysqli_query($con,"update compras set total_venta='$total_compra' where id_compra='$id_compra'");
 ?>
 <tr>
 	<td class='text-right' colspan=4>SUBTOTAL <?php echo $simbolo_moneda;?></td>
@@ -82,7 +82,7 @@ $simbolo_moneda="$";
 </tr>
 <tr>
 	<td class='text-right' colspan=4>TOTAL <?php echo $simbolo_moneda;?></td>
-	<td class='text-right'><?php echo number_format($total_factura,2);?></td>
+	<td class='text-right'><?php echo number_format($total_compra,2);?></td>
 	<td></td>
 </tr>
 

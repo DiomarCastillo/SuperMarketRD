@@ -1,33 +1,35 @@
 <?php
-include('is_logged.php');//Archivo verifica que el usario que intenta acceder a la URL esta logueado
+	include('is_logged.php');//Archivo verifica que el usario que intenta acceder a la URL esta logueado
+	$id_compra= $_SESSION['id_compra'];
 	/*Inicia validacion del lado del servidor*/
-	if (empty($_POST['codigo'])) {
-           $errors[] = "Código vacío";
-        } else if (empty($_POST['nombre'])){
-			$errors[] = "Nombre del producto vacío";
-		} else if ($_POST['estado']==""){
-			$errors[] = "Selecciona el estado del producto";
-		} else if (empty($_POST['precio'])){
-			$errors[] = "Precio de venta vacío";
+	if (empty($_POST['id_proveedor'])) {
+           $errors[] = "ID vacío";
+        }else if (empty($_POST['id_vendedor'])) {
+           $errors[] = "Selecciona el vendedor";
+        } else if (empty($_POST['condiciones'])){
+			$errors[] = "Selecciona forma de pago";
+		} else if ($_POST['estado_compra']==""){
+			$errors[] = "Selecciona el estado de la compra";
 		} else if (
-			!empty($_POST['codigo']) &&
-			!empty($_POST['nombre']) &&
-			$_POST['estado']!="" &&
-			!empty($_POST['precio'])
+			!empty($_POST['id_proveedor']) &&
+			!empty($_POST['id_vendedor']) &&
+			!empty($_POST['condiciones']) &&
+			$_POST['estado_compra']!="" 
 		){
 		/* Connect To Database*/
 		require_once ("../config/db.php");//Contiene las variables de configuracion para conectar a la base de datos
 		require_once ("../config/conexion.php");//Contiene funcion que conecta a la base de datos
 		// escaping, additionally removing everything that could be (html/javascript-) code
-		$codigo=mysqli_real_escape_string($con,(strip_tags($_POST["codigo"],ENT_QUOTES)));
-		$nombre=mysqli_real_escape_string($con,(strip_tags($_POST["nombre"],ENT_QUOTES)));
-		$estado=intval($_POST['estado']);
-		$precio_venta=floatval($_POST['precio']);
-		$date_added=date("Y-m-d H:i:s");
-		$sql="INSERT INTO productos (id_producto, nombre_producto, status_producto, date_added, precio_producto) VALUES ('$codigo','$nombre', '$estado','$date_added','$precio_venta')";
-		$query_new_insert = mysqli_query($con,$sql);
-			if ($query_new_insert){
-				$messages[] = "Producto ha sido ingresado satisfactoriamente.";
+		$id_proveedor=intval($_POST['id_proveedor']);
+		$id_vendedor=intval($_POST['id_vendedor']);
+		$condiciones=intval($_POST['condiciones']);
+
+		$estado_compra=intval($_POST['estado_compra']);
+		
+		$sql="UPDATE compras SET id_proveedor='".$id_proveedor."', id_vendedor='".$id_vendedor."', condiciones='".$condiciones."', estado_compra='".$estado_compra."' WHERE id_compra='".$id_compra."'";
+		$query_update = mysqli_query($con,$sql);
+			if ($query_update){
+				$messages[] = "compra ha sido actualizada satisfactoriamente.";
 			} else{
 				$errors []= "Lo siento algo ha salido mal intenta nuevamente.".mysqli_error($con);
 			}
@@ -63,4 +65,5 @@ include('is_logged.php');//Archivo verifica que el usario que intenta acceder a 
 				</div>
 				<?php
 			}
+
 ?>

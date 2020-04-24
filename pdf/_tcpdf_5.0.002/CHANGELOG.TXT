@@ -1378,7 +1378,7 @@
 1.53.0.TC004 (2005-01-04)
 	- this changelog were added.
 	- removed commercial fonts for licensing issue.
-	- Bitstream Vera Fonts were added (http://www.bitstream.com/font_rendering/products/dev_fonts/vera.html).
+	- Bitstream Vera Fonts were added (http://www.bitstream.com/font_rendering/productos/dev_fonts/vera.html).
 	- Now the AddFont and SetFont functions returns the basic font if the styled version do not exist.
 
 EOF ----------------------------------------------------------------------------

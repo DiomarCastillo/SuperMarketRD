@@ -29,7 +29,7 @@
 		<div class="panel panel-info">
 		<div class="panel-heading">
 		    <div class="btn-group pull-right">
-				<a  href="nueva_factura.php" class="btn btn-info"><span class="glyphicon glyphicon-plus" ></span> Nueva Compra</a>
+				<a  href="nueva_compra.php" class="btn btn-info"><span class="glyphicon glyphicon-plus" ></span> Nueva Compra</a>
 			</div>
 			<h4><i class='glyphicon glyphicon-search'></i> Buscar Compras</h4>
 		</div>
@@ -37,13 +37,10 @@
 				<form class="form-horizontal" role="form" id="datos_cotizacion">
 				
 						<div class="form-group row">
-							<label for="q" class="col-md-2 control-label">Proveedores o # de factura</label>
+							<label for="q" class="col-md-2 control-label">Proveedores o # de compra</label>
 							<div class="col-md-5">
-								<input type="text" class="form-control" id="q" placeholder="Nombre del proveedores o # de factura" onkeyup='load(1);'>
-							</div>
-							
-							
-							
+								<input type="text" class="form-control" id="q" placeholder="Nombre del proveedores o # de compra" onkeyup='load(1);'>
+							</div>			
 							<div class="col-md-3">
 								<button type="button" class="btn btn-default" onclick='load(1);'>
 									<span class="glyphicon glyphicon-search" ></span> Buscar</button>
@@ -51,9 +48,6 @@
 							</div>
 							
 						</div>
-				
-				
-				
 			</form>
 				<div id="resultados"></div><!-- Carga los datos ajax -->
 				<div class='outer_div'></div><!-- Carga los datos ajax -->
@@ -66,6 +60,6 @@
 	include("footer.php");
 	?>
 	<script type="text/javascript" src="js/VentanaCentrada.js"></script>
-	<script type="text/javascript" src="js/facturas.js"></script>
+	<script type="text/javascript" src="js/compras.js"></script>
   </body>
 </html>

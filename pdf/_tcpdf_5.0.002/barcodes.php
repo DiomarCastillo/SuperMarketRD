@@ -985,7 +985,7 @@ class TCPDFBarcode {
 	/**
 	 * EAN13 and UPC-A barcodes.
 	 * EAN13: European Article Numbering international retail product code
-	 * UPC-A: Universal product code seen on almost all retail products in the USA and Canada
+	 * UPC-A: Universal product code seen on almost all retail productos in the USA and Canada
 	 * UPC-E: Short version of UPC symbol
 	 * @param string $code code to represent.
 	 * @param string $len barcode type: 6 = UPC-E, 8 = EAN8, 13 = EAN13, 12 = UPC-A

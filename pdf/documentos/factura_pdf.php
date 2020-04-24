@@ -32,7 +32,7 @@
 	$sql=mysqli_query($con, "select LAST_INSERT_ID(numero_factura) as last from facturas order by id_factura desc limit 0,1 ");
 	$rw=mysqli_fetch_array($sql);
 	$numero_factura=$rw['last']+1;	
-	$simbolo_moneda=get_row('perfil','moneda', 'id_perfil', 1);
+	$simbolo_moneda="$";
     // get the HTML
      ob_start();
      include(dirname('__FILE__').'/res/factura_html.php');
