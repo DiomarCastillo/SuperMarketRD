@@ -14,7 +14,8 @@ if (isset($_POST['precio_venta'])){$precio_venta=floatval($_POST['precio_venta']
 	include("../funciones.php");
 if (!empty($id) and !empty($cantidad) and !empty($precio_venta))
 {
-$insert_tmp=mysqli_query($con, "INSERT INTO detalle_factura (numero_factura, id_producto,cantidad,precio_venta) VALUES ('$numero_factura','$id','$cantidad','$precio_venta')");
+$insert_tmp=mysqli_query($con, "INSERT INTO detalle_factura (numero_factura, id_producto,cantidad,precio_venta) 
+VALUES ('$numero_factura','$id','$cantidad','$precio_venta')");
 
 }
 if (isset($_GET['id']))//codigo elimina un elemento del array
@@ -39,7 +40,7 @@ $simbolo_moneda="$";
 	while ($row=mysqli_fetch_array($sql))
 	{
 	$id_detalle=$row["id_detalle"];
-	$codigo_producto=$row['codigo_producto'];
+	$codigo_producto=$row['id_producto'];
 	$cantidad=$row['cantidad'];
 	$nombre_producto=$row['nombre_producto'];
 	
@@ -65,9 +66,9 @@ $simbolo_moneda="$";
 	}
 	$impuesto=get_row('perfil','impuesto', 'id_perfil', 1);
 	$subtotal=number_format($sumador_total,2,'.','');
-	$total_iva=($subtotal * $impuesto )/100;
-	$total_iva=number_format($total_iva,2,'.','');
-	$total_factura=$subtotal+$total_iva;
+	$total_itbis=($subtotal * $impuesto )/100;
+	$total_itbis=number_format($total_itbis,2,'.','');
+	$total_factura=$subtotal+$total_itbis;
 	$update=mysqli_query($con,"update facturas set total_venta='$total_factura' where id_factura='$id_factura'");
 ?>
 <tr>
@@ -76,8 +77,8 @@ $simbolo_moneda="$";
 	<td></td>
 </tr>
 <tr>
-	<td class='text-right' colspan=4>IVA (<?php echo $impuesto;?>)% <?php echo $simbolo_moneda;?></td>
-	<td class='text-right'><?php echo number_format($total_iva,2);?></td>
+	<td class='text-right' colspan=4>ITBIS (<?php echo $impuesto;?>)% <?php echo $simbolo_moneda;?></td>
+	<td class='text-right'><?php echo number_format($total_itbis,2);?></td>
 	<td></td>
 </tr>
 <tr>

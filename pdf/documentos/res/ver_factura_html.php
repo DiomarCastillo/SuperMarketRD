@@ -44,7 +44,7 @@ table.page_footer {width: 100%; border: none; background-color: white; padding: 
                     P&aacute;gina [[page_cu]]/[[page_nb]]
                 </td>
                 <td style="width: 50%; text-align: right">
-                    &copy; <?php echo "obedalvarado.pw "; echo  $anio=date('Y'); ?>
+                    &copy; <?php echo "SuperMarketRD "; echo  $anio=date('Y'); ?>
                 </td>
             </tr>
         </table>
@@ -61,20 +61,19 @@ table.page_footer {width: 100%; border: none; background-color: white; padding: 
 		<tr>
            <td style="width:50%;" >
 			<?php 
-				$sql_proveedor=mysqli_query($con,"select * from proveedores where id_proveedor='$id_proveedor'");
-				$rw_proveedor=mysqli_fetch_array($sql_proveedor);
-				echo $rw_proveedor['nombre_proveedor'];
+				$sql_cliente=mysqli_query($con,"select * from clientes where id_cliente='$id_cliente'");
+				$rw_cliente=mysqli_fetch_array($sql_cliente);
+				echo $rw_cliente['nombre_cliente'];
 				echo "<br>";
-				echo $rw_proveedor['direccion_proveedor'];
+				echo $rw_cliente['direccion_cliente'];
 				echo "<br> Teléfono: ";
-				echo $rw_proveedor['telefono_proveedor'];
+				echo $rw_cliente['telefono_cliente'];
 				echo "<br> Email: ";
-				echo $rw_proveedor['email_proveedor'];
+				echo $rw_cliente['email_cliente'];
 			?>
 			
 		   </td>
         </tr>
-        
    
     </table>
     
@@ -126,7 +125,7 @@ $sql=mysqli_query($con, "select * from productos, detalle_factura, facturas wher
 while ($row=mysqli_fetch_array($sql))
 	{
 	$id_producto=$row["id_producto"];
-	$codigo_producto=$row['codigo_producto'];
+	$codigo_producto=$row['id_producto'];
 	$cantidad=$row['cantidad'];
 	$nombre_producto=$row['nombre_producto'];
 	
@@ -159,20 +158,20 @@ while ($row=mysqli_fetch_array($sql))
 	}
 	$impuesto=get_row('perfil','impuesto', 'id_perfil', 1);
 	$subtotal=number_format($sumador_total,2,'.','');
-	$total_iva=($subtotal * $impuesto )/100;
-	$total_iva=number_format($total_iva,2,'.','');
-	$total_factura=$subtotal+$total_iva;
+	$total_itbis=($subtotal * $impuesto )/100;
+	$total_itbis=number_format($total_itbis,2,'.','');
+	$total_factura=$subtotal+$total_itbis;
 ?>
 	  
         <tr>
-            <td colspan="3" style="widtd: 85%; text-align: right;">SUBTOTAL <?php echo $simbolo_moneda;?> </td>
+            <td colspan="3" style="widtd: 85%; text-align: right;">SUBTOTAL <?php echo "$";?> </td>
             <td style="widtd: 15%; text-align: right;"> <?php echo number_format($subtotal,2);?></td>
         </tr>
 		<tr>
-            <td colspan="3" style="widtd: 85%; text-align: right;">IVA (<?php echo $impuesto;?>)% <?php echo $simbolo_moneda;?> </td>
-            <td style="widtd: 15%; text-align: right;"> <?php echo number_format($total_iva,2);?></td>
+            <td colspan="3" style="widtd: 85%; text-align: right;">ITBIS (<?php echo $impuesto;?>)% <?php echo "$";?> </td>
+            <td style="widtd: 15%; text-align: right;"> <?php echo number_format($total_itbis,2);?></td>
         </tr><tr>
-            <td colspan="3" style="widtd: 85%; text-align: right;">TOTAL <?php echo $simbolo_moneda;?> </td>
+            <td colspan="3" style="widtd: 85%; text-align: right;">TOTAL <?php echo "$";?> </td>
             <td style="widtd: 15%; text-align: right;"> <?php echo number_format($total_factura,2);?></td>
         </tr>
     </table>

@@ -1,9 +1,11 @@
 <?php
+
 include('is_logged.php');//Archivo verifica que el usario que intenta acceder a la URL esta logueado
 $session_id= session_id();
 if (isset($_POST['id'])){$id=$_POST['id'];}
 if (isset($_POST['cantidad'])){$cantidad=$_POST['cantidad'];}
 if (isset($_POST['precio_venta'])){$precio_venta=$_POST['precio_venta'];}
+
 	/* Connect To Database*/
 	require_once ("../config/db.php");//Contiene las variables de configuracion para conectar a la base de datos
 	require_once ("../config/conexion.php");//Contiene funcion que conecta a la base de datos
@@ -11,15 +13,15 @@ if (isset($_POST['precio_venta'])){$precio_venta=$_POST['precio_venta'];}
 	include("../funciones.php");
 if (!empty($id) and !empty($cantidad) and !empty($precio_venta))
 {
-$insert_tmp=mysqli_query($con, "INSERT INTO tmp (id_producto,cantidad_tmp,precio_tmp,session_id) 
-VALUES ('$id','$cantidad','$precio_venta','$session_id')");
+$insert_tmp=mysqli_query($con, "INSERT INTO tmp (id_producto,cantidad_tmp,precio_tmp,session_id) VALUES ('$id','$cantidad','$precio_venta','$session_id')");
+
 }
 if (isset($_GET['id']))//codigo elimina un elemento del array
 {
 $id_tmp=intval($_GET['id']);	
 $delete=mysqli_query($con, "DELETE FROM tmp WHERE id_tmp='".$id_tmp."'");
 }
-
+$simbolo_moneda="$";
 ?>
 <table class="table">
 <tr>
@@ -46,8 +48,7 @@ $delete=mysqli_query($con, "DELETE FROM tmp WHERE id_tmp='".$id_tmp."'");
 	$precio_total_f=number_format($precio_total,2);//Precio total formateado
 	$precio_total_r=str_replace(",","",$precio_total_f);//Reemplazo las comas
 	$sumador_total+=$precio_total_r;//Sumador
-	//$venta="venta('$codigo_producto','$cantidad')";
-	//$sql=mysqli_query($con, $venta);
+	
 		?>
 		<tr>
 			<td class='text-center'><?php echo $codigo_producto;?></td>
@@ -64,31 +65,21 @@ $delete=mysqli_query($con, "DELETE FROM tmp WHERE id_tmp='".$id_tmp."'");
 	$total_itbis=($subtotal * $impuesto )/100;
 	$total_itbis=number_format($total_itbis,2,'.','');
 	$total_factura=$subtotal+$total_itbis;
-	// $delete=mysqli_query($con, "DELETE * FROM tmp");
 
 ?>
 <tr>
-	<td class='text-right' colspan=4>SUBTOTAL <?php echo "$";?></td>
+	<td class='text-right' colspan=4>SUBTOTAL <?php echo $simbolo_moneda;?></td>
 	<td class='text-right'><?php echo number_format($subtotal,2);?></td>
 	<td></td>
 </tr>
 <tr>
-	<td class='text-right' colspan=4>ITBIS (<?php echo $impuesto;?>)% <?php echo "$";?></td>
+	<td class='text-right' colspan=4>ITBIS (<?php echo $impuesto;?>)% <?php echo $simbolo_moneda;?></td>
 	<td class='text-right'><?php echo number_format($total_itbis,2);?></td>
 	<td></td>
 </tr>
 <tr>
-	<td class='text-right' colspan=4>TOTAL <?php echo "$";?></td>
+	<td class='text-right' colspan=4>TOTAL <?php echo $simbolo_moneda;?></td>
 	<td class='text-right'><?php echo number_format($total_factura,2);?></td>
-	<td></td>
-</tr>
-<tr>
-	<td class='text-right' colspan=4>PAGO <?php echo "$";?></td>
-	<td class='text-right'><?php $pago=5000; echo number_format($pago,2);?></td>	<td></td>
-</tr>
-<tr>
-	<td class='text-right' colspan=4>CAMBIO <?php echo "$";?></td>
-	<td class='text-right'><?php echo number_format(($pago-$total_factura),2);?></td>
 	<td></td>
 </tr>
 

@@ -39,7 +39,7 @@ $simbolo_moneda="$";
 	while ($row=mysqli_fetch_array($sql))
 	{
 	$id_detalle=$row["id_detalle"];
-	$codigo_producto=$row['codigo_producto'];
+	$codigo_producto=$row['id_producto'];
 	$cantidad=$row['cantidad'];
 	$nombre_producto=$row['nombre_producto'];
 	
@@ -65,9 +65,9 @@ $simbolo_moneda="$";
 	}
 	$impuesto=get_row('perfil','impuesto', 'id_perfil', 1);
 	$subtotal=number_format($sumador_total,2,'.','');
-	$total_iva=($subtotal * $impuesto )/100;
-	$total_iva=number_format($total_iva,2,'.','');
-	$total_compra=$subtotal+$total_iva;
+	$total_itbis=($subtotal * $impuesto )/100;
+	$total_itbis=number_format($total_itbis,2,'.','');
+	$total_compra=$subtotal+$total_itbis;
 	$update=mysqli_query($con,"update compras set total_venta='$total_compra' where id_compra='$id_compra'");
 ?>
 <tr>
@@ -76,8 +76,8 @@ $simbolo_moneda="$";
 	<td></td>
 </tr>
 <tr>
-	<td class='text-right' colspan=4>IVA (<?php echo $impuesto;?>)% <?php echo $simbolo_moneda;?></td>
-	<td class='text-right'><?php echo number_format($total_iva,2);?></td>
+	<td class='text-right' colspan=4>ITBIS (<?php echo $impuesto;?>)% <?php echo $simbolo_moneda;?></td>
+	<td class='text-right'><?php echo number_format($total_itbis,2);?></td>
 	<td></td>
 </tr>
 <tr>

@@ -1,9 +1,9 @@
 ## BUILDING
 ##   (from project root directory)
-##   $ docker build -t php-for-joaquinobed-simple-invoice .
+##   $ docker build -t php-for-joaquinobed-supermarketrd_db .
 ##
 ## RUNNING
-##   $ docker run -p 9000:9000 php-for-joaquinobed-simple-invoice
+##   $ docker run -p 9000:9000 php-for-joaquinobed-supermarketrd_db
 ##
 ## CONNECTING
 ##   Lookup the IP of your active docker host using:
@@ -16,7 +16,7 @@ FROM gcr.io/stacksmith-images/minideb-buildpack:jessie-r7
 MAINTAINER Bitnami <containers@bitnami.com>
 
 ENV STACKSMITH_STACK_ID="zgv4q78" \
-    STACKSMITH_STACK_NAME="PHP for joaquinobed/simple-invoice" \
+    STACKSMITH_STACK_NAME="PHP for joaquinobed/supermarketrd_db" \
     STACKSMITH_STACK_PRIVATE="1"
 
 # Install required system packages

@@ -133,6 +133,6 @@
 		  event.preventDefault();
 		})
 
-		function imprimir_compra(id_compra){
-			VentanaCentrada('./pdf/documentos/ver_compra.php?id_compra='+id_compra,'compra','','1024','768','true');
+		function imprimir_factura(id_factura){
+			VentanaCentrada('./pdf/documentos/ver_factura.php?id_factura='+id_factura,'Factura','','1024','768','true');
 		}

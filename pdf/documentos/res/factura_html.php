@@ -126,7 +126,7 @@ while ($row=mysqli_fetch_array($sql))
 	{
 	$id_tmp=$row["id_tmp"];
 	$id_producto=$row["id_producto"];
-	$codigo_producto=$row['codigo_producto'];
+	$codigo_producto=$row['id_producto'];
 	$cantidad=$row['cantidad_tmp'];
 	$nombre_producto=$row['nombre_producto'];
 	
@@ -154,26 +154,27 @@ while ($row=mysqli_fetch_array($sql))
 
 	<?php 
 	//Insert en la tabla detalle_cotizacion
-	$insert_detail=mysqli_query($con, "INSERT INTO detalle_factura VALUES ('','$numero_factura','$id_producto','$cantidad','$precio_venta_r')");
+	$insert_detail=mysqli_query($con, "INSERT INTO detalle_factura (numero_factura, id_producto,cantidad,precio_venta) 
+	VALUES ('$numero_factura','$id_producto','$cantidad','$precio_venta_r')");
 	
 	$nums++;
 	}
 	$impuesto=get_row('perfil','impuesto', 'id_perfil', 1);
 	$subtotal=number_format($sumador_total,2,'.','');
-	$total_iva=($subtotal * $impuesto )/100;
-	$total_iva=number_format($total_iva,2,'.','');
-	$total_factura=$subtotal+$total_iva;
+	$total_itbis=($subtotal * $impuesto )/100;
+	$total_itbis=number_format($total_itbis,2,'.','');
+	$total_factura=$subtotal+$total_itbis;
 ?>
 	  
         <tr>
-            <td colspan="3" style="widtd: 85%; text-align: right;">SUBTOTAL <?php echo $simbolo_moneda;?> </td>
+            <td colspan="3" style="widtd: 85%; text-align: right;">SUBTOTAL <?php echo "$";?> </td>
             <td style="widtd: 15%; text-align: right;"> <?php echo number_format($subtotal,2);?></td>
         </tr>
 		<tr>
-            <td colspan="3" style="widtd: 85%; text-align: right;">IVA (<?php echo $impuesto; ?>)% <?php echo $simbolo_moneda;?> </td>
-            <td style="widtd: 15%; text-align: right;"> <?php echo number_format($total_iva,2);?></td>
+            <td colspan="3" style="widtd: 85%; text-align: right;">ITBIS (<?php echo $impuesto; ?>)% <?php echo "$";?> </td>
+            <td style="widtd: 15%; text-align: right;"> <?php echo number_format($total_itbis,2);?></td>
         </tr><tr>
-            <td colspan="3" style="widtd: 85%; text-align: right;">TOTAL <?php echo $simbolo_moneda;?> </td>
+            <td colspan="3" style="widtd: 85%; text-align: right;">TOTAL <?php echo "$";?> </td>
             <td style="widtd: 15%; text-align: right;"> <?php echo number_format($total_factura,2);?></td>
         </tr>
     </table>

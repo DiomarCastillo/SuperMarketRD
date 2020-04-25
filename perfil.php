@@ -78,6 +78,7 @@
                         <td>ITBIS (%):</td>
                         <td><input type="text" class="form-control input-sm" required name="impuesto" value="<?php echo $row['impuesto']?>"></td>
                       </tr>
+					  
 				
 					  <tr>
                         <td>Dirección:</td>
@@ -95,22 +96,15 @@
                         <td>Código postal:</td>
                         <td><input type="text" class="form-control input-sm" name="codigo_postal" value="<?php echo $row["codigo_postal"];?>"></td>
                       </tr>
-                   
-                        
-                     
                     </tbody>
-                  </table>
-                  
-                  
+                  </table>              
                 </div>
 				<div class='col-md-12' id="resultados_ajax"></div><!-- Carga los datos ajax -->
               </div>
             </div>
                  <div class="panel-footer text-center">
-                    
-                     
-                            <button type="submit" class="btn btn-sm btn-success"><i class="glyphicon glyphicon-refresh"></i> Actualizar datos</button>
-                       
+  
+                            <button type="submit" class="btn btn-sm btn-success"><i class="glyphicon glyphicon-refresh"></i> Actualizar datos</button>                     
                        
                     </div>
             

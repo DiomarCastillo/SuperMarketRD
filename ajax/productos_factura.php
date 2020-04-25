@@ -1,6 +1,6 @@
 <?php
 
-	
+
 	include('is_logged.php');//Archivo verifica que el usario que intenta acceder a la URL esta logueado
 	/* Connect To Database*/
 	require_once ("../config/db.php");//Contiene las variables de configuracion para conectar a la base de datos
@@ -10,7 +10,7 @@
 	if($action == 'ajax'){
 		// escaping, additionally removing everything that could be (html/javascript-) code
          $q = mysqli_real_escape_string($con,(strip_tags($_REQUEST['q'], ENT_QUOTES)));
-		 $aColumns = array('codigo_producto', 'nombre_producto');//Columnas de busqueda
+		 $aColumns = array('id_producto', 'nombre_producto');//Columnas de busqueda
 		 $sTable = "productos";
 		 $sWhere = "";
 		if ( $_GET['q'] != "" )
