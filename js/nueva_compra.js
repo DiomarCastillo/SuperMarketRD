@@ -7,7 +7,7 @@
 			var q= $("#q").val();
 			$("#loader").fadeIn('slow');
 			$.ajax({
-				url:'./ajax/productos_factura.php?action=ajax&page='+page+'&q='+q,
+				url:'./ajax/productos_compras.php?action=ajax&page='+page+'&q='+q,
 				 beforeSend: function(objeto){
 				 $('#loader').html('<img src="./img/ajax-loader.gif"> Cargando...');
 			  },
@@ -68,7 +68,7 @@
 
 		}
 		
-		$("#datos_compra").submit(function(){
+		$("#datos_factura").submit(function(){
 		  var id_proveedor = $("#id_proveedor").val();
 		  var id_vendedor = $("#id_vendedor").val();
 		  var condiciones = $("#condiciones").val();
@@ -78,10 +78,10 @@
 			  $("#nombre_proveedor").focus();
 			  return false;
 		  }
-		 VentanaCentrada('./pdf/documentos/compra_pdf.php?id_proveedor='+id_proveedor+'&id_vendedor='+id_vendedor+'&condiciones='+condiciones,'compra','','1024','768','true');
+		 VentanaCentrada('./pdf/documentos/compra_pdf.php?id_proveedor='+id_proveedor+'&id_vendedor='+id_vendedor+'&condiciones='+condiciones,'Compra','','1024','768','true');
 	 	});
 		
-		$( "#guardar_proveedor" ).submit(function( event ) {
+		$( "#guardar_cliente" ).submit(function( event ) {
 		  $('#guardar_datos').attr("disabled", true);
 		  
 		 var parametros = $(this).serialize();

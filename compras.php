@@ -1,5 +1,5 @@
 <?php
-
+	
 	session_start();
 	if (!isset($_SESSION['user_login_status']) AND $_SESSION['user_login_status'] != 1) {
         header("location: login.php");
@@ -9,11 +9,10 @@
 	$active_facturas="";
 	$active_productos="";
 	$active_clientes="";
-    $active_usuarios="";
-    $active_proveedores="";
-    $active_compras="active";
-    $active_reportes="";	
-	$title="Compras | SuperMarketRD";
+	$active_usuarios="";	
+	$active_compras="active";
+
+	$title="Compras | SupermarketRD";
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -37,10 +36,13 @@
 				<form class="form-horizontal" role="form" id="datos_cotizacion">
 				
 						<div class="form-group row">
-							<label for="q" class="col-md-2 control-label">Proveedores o # de compra</label>
+							<label for="q" class="col-md-2 control-label">Proveedor o # de factura</label>
 							<div class="col-md-5">
-								<input type="text" class="form-control" id="q" placeholder="Nombre del proveedores o # de compra" onkeyup='load(1);'>
-							</div>			
+								<input type="text" class="form-control" id="q" placeholder="Nombre del proveedor o # de factura" onkeyup='load(1);'>
+							</div>
+							
+							
+							
 							<div class="col-md-3">
 								<button type="button" class="btn btn-default" onclick='load(1);'>
 									<span class="glyphicon glyphicon-search" ></span> Buscar</button>
@@ -48,6 +50,9 @@
 							</div>
 							
 						</div>
+				
+				
+				
 			</form>
 				<div id="resultados"></div><!-- Carga los datos ajax -->
 				<div class='outer_div'></div><!-- Carga los datos ajax -->

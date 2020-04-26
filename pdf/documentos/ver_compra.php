@@ -15,13 +15,13 @@
 	$count=mysqli_num_rows($sql_count);
 	if ($count==0)
 	{
-	echo "<script>alert('Compra no encontrada')</script>";
+	echo "<script>alert('Factura no encontrada')</script>";
 	echo "<script>window.close();</script>";
 	exit;
 	}
 	$sql_compra=mysqli_query($con,"select * from compras where id_compra='".$id_compra."'");
 	$rw_compra=mysqli_fetch_array($sql_compra);
-	$numero_compra=$rw_compra['numero_compra'];
+	$numero_compra=$rw_compra['id_compra'];
 	$id_proveedor=$rw_compra['id_proveedor'];
 	$id_vendedor=$rw_compra['id_vendedor'];
 	$fecha_compra=$rw_compra['fecha_compra'];
@@ -30,7 +30,8 @@
 	require_once(dirname(__FILE__).'/../html2pdf.class.php');
     // get the HTML
      ob_start();
-     include(dirname('__FILE__').'/res/ver_compra_html.php');
+	 include(dirname('__FILE__'
+	 ).'/res/ver_compra_html.php');
     $content = ob_get_clean();
 
     try
@@ -41,8 +42,9 @@
         $html2pdf->pdf->SetDisplayMode('fullpage');
         // convert
         $html2pdf->writeHTML($content, isset($_GET['vuehtml']));
-        // send the PDF
-        $html2pdf->Output('compra.pdf');
+		// send the PDF
+		ob_end_clean();
+        $html2pdf->Output('Compra.pdf');
     }
     catch(HTML2PDF_exception $e) {
         echo $e;

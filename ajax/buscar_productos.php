@@ -40,7 +40,7 @@
 		// escaping, additionally removing everything that could be (html/javascript-) code
          $q = mysqli_real_escape_string($con,(strip_tags($_REQUEST['q'], ENT_QUOTES)));
 		 $aColumns = array('id_producto', 'nombre_producto');//Columnas de busqueda
-		 $sTable = "producto";
+		 $sTable = "productos";
 		 $sWhere = "";
 		if ( $_GET['q'] != "" )
 		{

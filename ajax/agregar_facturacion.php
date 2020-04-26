@@ -21,7 +21,7 @@ if (isset($_GET['id']))//codigo elimina un elemento del array
 $id_tmp=intval($_GET['id']);	
 $delete=mysqli_query($con, "DELETE FROM tmp WHERE id_tmp='".$id_tmp."'");
 }
-$simbolo_moneda="$";
+$simbolo_moneda= "$";
 ?>
 <table class="table">
 <tr>
@@ -41,6 +41,8 @@ $simbolo_moneda="$";
 	$codigo_producto=$row['id_producto'];
 	$cantidad=$row['cantidad_tmp'];
 	$nombre_producto=$row['nombre_producto'];
+	
+	
 	$precio_venta=$row['precio_tmp'];
 	$precio_venta_f=number_format($precio_venta,2);//Formateo variables
 	$precio_venta_r=str_replace(",","",$precio_venta_f);//Reemplazo las comas

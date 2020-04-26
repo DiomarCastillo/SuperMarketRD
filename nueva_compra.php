@@ -8,11 +8,9 @@
 	$active_facturas="";
 	$active_productos="";
 	$active_clientes="";
-	$active_usuarios=""; 
-	$active_proveedores="";
+	$active_usuarios="";	
 	$active_compras="active";
-	$active_reportes="";		
-	$title="Nueva Factura | SuperMarketRD";
+	$title="Nueva Compra | SupermarketRD";
 	
 	/* Connect To Database*/
 	require_once ("config/db.php");//Contiene las variables de configuracion para conectar a la base de datos
@@ -38,7 +36,7 @@
 			include("modal/registro_proveedores.php");
 			include("modal/registro_productos.php");
 		?>
-			<form class="form-horizontal" role="form" id="datos_compra">
+			<form class="form-horizontal" role="form" id="datos_factura">
 				<div class="form-group row">
 				  <label for="nombre_proveedor" class="col-md-1 control-label">Proveedor</label>
 				  <div class="col-md-3">
@@ -96,7 +94,7 @@
 						<button type="button" class="btn btn-default" data-toggle="modal" data-target="#nuevoProducto">
 						 <span class="glyphicon glyphicon-plus"></span> Nuevo producto
 						</button>
-						<button type="button" class="btn btn-default" data-toggle="modal" data-target="#nuevoproveedor">
+						<button type="button" class="btn btn-default" data-toggle="modal" data-target="#nuevoProveedor">
 						 <span class="glyphicon glyphicon-user"></span> Nuevo proveedor
 						</button>
 						<button type="button" class="btn btn-default" data-toggle="modal" data-target="#myModal">

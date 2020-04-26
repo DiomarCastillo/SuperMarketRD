@@ -47,7 +47,8 @@
         $html2pdf->pdf->SetDisplayMode('fullpage');
         // convert
         $html2pdf->writeHTML($content, isset($_GET['vuehtml']));
-        // send the PDF
+		// send the PDF
+		ob_end_clean();
         $html2pdf->Output('Factura.pdf');
     }
     catch(HTML2PDF_exception $e) {

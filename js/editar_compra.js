@@ -8,7 +8,7 @@
 			var q= $("#q").val();
 			$("#loader").fadeIn('slow');
 			$.ajax({
-				url:'./ajax/productos_compra.php?action=ajax&page='+page+'&q='+q,
+				url:'./ajax/productos_compras.php?action=ajax&page='+page+'&q='+q,
 				 beforeSend: function(objeto){
 				 $('#loader').html('<img src="./img/ajax-loader.gif"> Cargando...');
 			  },
@@ -22,7 +22,7 @@
 
 	function agregar (id)
 		{
-			var precio_venta=document.getElementById('precio_venta_'+id).value;
+			var precio_compra=document.getElementById('precio_compra_'+id).value;
 			var cantidad=document.getElementById('cantidad_'+id).value;
 			//Inicia validacion
 			if (isNaN(cantidad))
@@ -31,10 +31,10 @@
 			document.getElementById('cantidad_'+id).focus();
 			return false;
 			}
-			if (isNaN(precio_venta))
+			if (isNaN(precio_compra))
 			{
 			alert('Esto no es un numero');
-			document.getElementById('precio_venta_'+id).focus();
+			document.getElementById('precio_compra_'+id).focus();
 			return false;
 			}
 			//Fin validacion
@@ -42,7 +42,7 @@
 			$.ajax({
         type: "POST",
         url: "./ajax/editar_compras.php",
-        data: "id="+id+"&precio_venta="+precio_venta+"&cantidad="+cantidad,
+        data: "id="+id+"&precio_compra="+precio_compra+"&cantidad="+cantidad,
 		 beforeSend: function(objeto){
 			$("#resultados").html("Mensaje: Cargando...");
 		  },
@@ -70,9 +70,9 @@
 		}
 		
 		$("#datos_compra").submit(function(event){
-		  var id_proveedor = $("#id_proveedor").val();
+		  var id_cliente = $("#id_proveedor").val();
 	  
-		  if (id_proveedor==""){
+		  if (id_cliente==""){
 			  alert("Debes seleccionar un proveedor");
 			  $("#nombre_proveedor").focus();
 			  return false;
@@ -133,6 +133,6 @@
 		  event.preventDefault();
 		})
 
-		function imprimir_factura(id_factura){
-			VentanaCentrada('./pdf/documentos/ver_factura.php?id_factura='+id_factura,'Factura','','1024','768','true');
+		function imprimir_compra(id_compra){
+			VentanaCentrada('./pdf/documentos/ver_compra.php?id_compra='+id_compra,'Compra','','1024','768','true');
 		}

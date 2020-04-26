@@ -56,20 +56,20 @@ table.page_footer {width: 100%; border: none; background-color: white; padding: 
 	
     <table cellspacing="0" style="width: 100%; text-align: left; font-size: 11pt;">
         <tr>
-           <td style="width:50%;" class='midnight-blue'>compraR A</td>
+           <td style="width:50%;" class='midnight-blue'>FACTURAR A</td>
         </tr>
 		<tr>
            <td style="width:50%;" >
 			<?php 
-				$sql_cliente=mysqli_query($con,"select * from clientes where id_cliente='$id_cliente'");
-				$rw_cliente=mysqli_fetch_array($sql_cliente);
-				echo $rw_cliente['nombre_cliente'];
+				$sql_proveedor=mysqli_query($con,"select * from proveedores where id_proveedor='$id_proveedor'");
+				$rw_proveedor=mysqli_fetch_array($sql_proveedor);
+				echo $rw_proveedor['nombre_proveedor'];
 				echo "<br>";
-				echo $rw_cliente['direccion_cliente'];
+				echo $rw_proveedor['direccion_proveedor'];
 				echo "<br> Teléfono: ";
-				echo $rw_cliente['telefono_cliente'];
+				echo $rw_proveedor['telefono_proveedor'];
 				echo "<br> Email: ";
-				echo $rw_cliente['email_cliente'];
+				echo $rw_proveedor['email_proveedor'];
 			?>
 			
 		   </td>
@@ -81,7 +81,7 @@ table.page_footer {width: 100%; border: none; background-color: white; padding: 
        <br>
 		<table cellspacing="0" style="width: 100%; text-align: left; font-size: 11pt;">
         <tr>
-           <td style="width:35%;" class='midnight-blue'>VENDEDOR</td>
+           <td style="width:35%;" class='midnight-blue'>COMPRADO</td>
 		  <td style="width:25%;" class='midnight-blue'>FECHA</td>
 		   <td style="width:40%;" class='midnight-blue'>FORMA DE PAGO</td>
         </tr>
@@ -166,22 +166,30 @@ while ($row=mysqli_fetch_array($sql))
 ?>
 	  
         <tr>
-            <td colspan="3" style="widtd: 85%; text-align: right;">SUBTOTAL <?php echo "$";?> </td>
+            <td colspan="3" style="widtd: 85%; text-align: right;">SUBTOTAL <?php echo $simbolo_moneda;?> </td>
             <td style="widtd: 15%; text-align: right;"> <?php echo number_format($subtotal,2);?></td>
         </tr>
 		<tr>
-            <td colspan="3" style="widtd: 85%; text-align: right;">ITBIS (<?php echo $impuesto; ?>)% <?php echo "$";?> </td>
+            <td colspan="3" style="widtd: 85%; text-align: right;">ITBIS (<?php echo $impuesto; ?>)% <?php echo $simbolo_moneda;?> </td>
             <td style="widtd: 15%; text-align: right;"> <?php echo number_format($total_itbis,2);?></td>
         </tr><tr>
-            <td colspan="3" style="widtd: 85%; text-align: right;">TOTAL <?php echo "$";?> </td>
+            <td colspan="3" style="widtd: 85%; text-align: right;">TOTAL <?php echo $simbolo_moneda;?> </td>
             <td style="widtd: 15%; text-align: right;"> <?php echo number_format($total_compra,2);?></td>
         </tr>
     </table>
+	
+	
+	
 	<br>
 	<div style="font-size:11pt;text-align:center;font-weight:bold">Gracias por su compra!</div>
+	
+	
+	  
+
 </page>
+
 <?php
 $date=date("Y-m-d H:i:s");
-$insert=mysqli_query($con,"INSERT INTO compras VALUES (NULL,'$numero_compra','$date','$id_cliente','$id_vendedor','$condiciones','$total_compra','1')");
+$insert=mysqli_query($con,"INSERT INTO compras VALUES (NULL,'$numero_compra','$date','$id_proveedor','$id_vendedor','$condiciones','$total_compra','1')");
 $delete=mysqli_query($con,"DELETE FROM tmp WHERE session_id='".$session_id."'");
 ?>

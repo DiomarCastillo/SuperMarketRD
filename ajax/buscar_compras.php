@@ -7,7 +7,7 @@
 	
 	$action = (isset($_REQUEST['action'])&& $_REQUEST['action'] !=NULL)?$_REQUEST['action']:'';
 	if (isset($_GET['id'])){
-		$numero_compra=intval($_GET['id']);
+		$numero_factura=intval($_GET['id']);
 		$del1="delete from compras where numero_compra='".$numero_compra."'";
 		$del2="delete from detalle_compra where numero_compra='".$numero_compra."'";
 		if ($delete1=mysqli_query($con,$del1) and $delete2=mysqli_query($con,$del2)){
@@ -64,7 +64,7 @@
 				<tr  class="info">
 					<th>#</th>
 					<th>Fecha</th>
-					<th>proveedor</th>
+					<th>Cliente</th>
 					<th>Vendedor</th>
 					<th>Estado</th>
 					<th class='text-right'>Total</th>
@@ -73,29 +73,29 @@
 				</tr>
 				<?php
 				while ($row=mysqli_fetch_array($query)){
-						$id_compra=$row['id_compra'];
-						$numero_compra=$row['numero_compra'];
+						$id_factura=$row['id_compra'];
+						$numero_factura=$row['numero_compra'];
 						$fecha=date("d/m/Y", strtotime($row['fecha_compra']));
-						$nombre_proveedor=$row['nombre_proveedor'];
-						$telefono_proveedor=$row['telefono_proveedor'];
-						$email_proveedor=$row['email_proveedor'];
+						$nombre_cliente=$row['nombre_proveedor'];
+						$telefono_cliente=$row['telefono_proveedor'];
+						$email_cliente=$row['email_proveedor'];
 						$nombre_vendedor=$row['firstname']." ".$row['lastname'];
-						$estado_compra=$row['estado_compra'];
-						if ($estado_compra==1){$text_estado="Pagada";$label_class='label-success';}
+						$estado_factura=$row['estado_compra'];
+						if ($estado_factura==1){$text_estado="Pagada";$label_class='label-success';}
 						else{$text_estado="Pendiente";$label_class='label-warning';}
-						$total_venta=$row['total_venta'];
+						$total_venta=$row['total_compra'];
 					?>
 					<tr>
-						<td><?php echo $numero_compra; ?></td>
+						<td><?php echo $numero_factura; ?></td>
 						<td><?php echo $fecha; ?></td>
-						<td><a href="#" data-toggle="tooltip" data-placement="top" title="<i class='glyphicon glyphicon-phone'></i> <?php echo $telefono_proveedor;?><br><i class='glyphicon glyphicon-envelope'></i>  <?php echo $email_proveedor;?>" ><?php echo $nombre_proveedor;?></a></td>
+						<td><a href="#" data-toggle="tooltip" data-placement="top" title="<i class='glyphicon glyphicon-phone'></i> <?php echo $telefono_cliente;?><br><i class='glyphicon glyphicon-envelope'></i>  <?php echo $email_cliente;?>" ><?php echo $nombre_cliente;?></a></td>
 						<td><?php echo $nombre_vendedor; ?></td>
 						<td><span class="label <?php echo $label_class;?>"><?php echo $text_estado; ?></span></td>
 						<td class='text-right'><?php echo number_format ($total_venta,2); ?></td>					
 					<td class="text-right">
-						<a href="editar_compra.php?id_compra=<?php echo $id_compra;?>" class='btn btn-default' title='Editar compra' ><i class="glyphicon glyphicon-edit"></i></a> 
-						<a href="#" class='btn btn-default' title='Descargar compra' onclick="imprimir_compra('<?php echo $id_compra;?>');"><i class="glyphicon glyphicon-download"></i></a> 
-						<a href="#" class='btn btn-default' title='Borrar compra' onclick="eliminar('<?php echo $numero_compra; ?>')"><i class="glyphicon glyphicon-trash"></i> </a>
+					<a href="editar_compra.php?id_factura=<?php echo $id_factura;?>" class='btn btn-default' title='Editar factura' ><i class="glyphicon glyphicon-edit"></i></a> 
+						<a href="#" class='btn btn-default' title='Descargar compra' onclick="imprimir_compra('<?php echo $id_factura;?>');"><i class="glyphicon glyphicon-download"></i></a> 
+						<a href="#" class='btn btn-default' title='Borrar factura' onclick="eliminar('<?php echo $numero_factura; ?>')"><i class="glyphicon glyphicon-trash"></i> </a>
 					</td>
 						
 					</tr>

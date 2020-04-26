@@ -9,9 +9,6 @@
 	$active_productos="";
 	$active_clientes="";
 	$active_usuarios="";	
-	$active_proveedores="";
-	$active_compras="";
-	$active_reportes="";
 	$title="Editar Factura | SuperMarketRD";
 	
 	/* Connect To Database*/

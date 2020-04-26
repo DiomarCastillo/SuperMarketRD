@@ -1,24 +1,25 @@
 <?php
-
+	/*-------------------------
+	Autor: Obed Alvarado
+	Web: obedalvarado.pw
+	Mail: info@obedalvarado.pw
+	---------------------------*/
 	session_start();
 	if (!isset($_SESSION['user_login_status']) AND $_SESSION['user_login_status'] != 1) {
         header("location: login.php");
 		exit;
         }
-	$active_facturas="";
+	$active_facturas="active";
 	$active_productos="";
 	$active_clientes="";
 	$active_usuarios="";	
-	$active_proveedores="";
-	$active_compras="active";
-	$active_reportes="";
 	$title="Editar Compra | SuperMarketRD";
 	
 	/* Connect To Database*/
 	require_once ("config/db.php");//Contiene las variables de configuracion para conectar a la base de datos
 	require_once ("config/conexion.php");//Contiene funcion que conecta a la base de datos
 	
-	if (isset($_GET['id_compra']))
+	if (isset($_GET['id_factura']))
 	{
 		$id_compra=intval($_GET['id_compra']);
 		$campos="proveedores.id_proveedor, proveedores.nombre_proveedor, proveedores.telefono_proveedor, proveedores.email_proveedor, compras.id_vendedor, compras.fecha_compra, compras.condiciones, compras.estado_compra, compras.numero_compra";
@@ -71,12 +72,12 @@
 			include("modal/registro_proveedores.php");
 			include("modal/registro_productos.php");
 		?>
-			<form class="form-horizontal" role="form" id="datos_compra">
+			<form class="form-horizontal" role="form" id="datos_factura">
 				<div class="form-group row">
-				  <label for="nombre_proveedor" class="col-md-1 control-label">Proveedor</label>
+				  <label for="nombre_cliente" class="col-md-1 control-label">Cliente</label>
 				  <div class="col-md-3">
-					  <input type="text" class="form-control input-sm" id="nombre_proveedor" placeholder="Selecciona un proveedor" required value="<?php echo $nombre_proveedor;?>">
-					  <input id="id_proveedor" name="id_proveedor" type='hidden' value="<?php echo $id_proveedor;?>">	
+					  <input type="text" class="form-control input-sm" id="nombre_cliente" placeholder="Selecciona un proveedor" required value="<?php echo $nombre_proveedor;?>">
+					  <input id="id_cliente" name="id_cliente" type='hidden' value="<?php echo $id_proveedor;?>">	
 				  </div>
 				  <label for="tel1" class="col-md-1 control-label">Teléfono</label>
 							<div class="col-md-2">
@@ -122,7 +123,7 @@
 								</select>
 							</div>
 							<div class="col-md-2">
-								<select class='form-control input-sm ' id="estado_compra" name="estado_compra">
+								<select class='form-control input-sm ' id="estado_factura" name="estado_factura">
 									<option value="1" <?php if ($estado_compra==1){echo "selected";}?>>Pagado</option>
 									<option value="2" <?php if ($estado_compra==2){echo "selected";}?>>Pendiente</option>
 								</select>
@@ -138,13 +139,13 @@
 						<button type="button" class="btn btn-default" data-toggle="modal" data-target="#nuevoProducto">
 						 <span class="glyphicon glyphicon-plus"></span> Nuevo producto
 						</button>
-						<button type="button" class="btn btn-default" data-toggle="modal" data-target="#nuevoproveedor">
-						 <span class="glyphicon glyphicon-user"></span> Nuevo proveedor
+						<button type="button" class="btn btn-default" data-toggle="modal" data-target="#nuevoCliente">
+						 <span class="glyphicon glyphicon-user"></span> Nuevo cliente
 						</button>
 						<button type="button" class="btn btn-default" data-toggle="modal" data-target="#myModal">
 						 <span class="glyphicon glyphicon-search"></span> Agregar productos
 						</button>
-						<button type="button" class="btn btn-default" onclick="imprimir_compra('<?php echo $id_compra;?>')">
+						<button type="button" class="btn btn-default" onclick="imprimir_factura('<?php echo $id_compra;?>')">
 						  <span class="glyphicon glyphicon-print"></span> Imprimir
 						</button>
 					</div>	
@@ -178,9 +179,12 @@
 								$('#nombre_proveedor').val(ui.item.nombre_proveedor);
 								$('#tel1').val(ui.item.telefono_proveedor);
 								$('#mail').val(ui.item.email_proveedor);
-
+																
+								
 							 }
-						});						
+						});
+						 
+						
 					});
 					
 	$("#nombre_proveedor" ).on( "keydown", function( event ) {
@@ -199,5 +203,6 @@
 						}
 			});	
 	</script>
+
   </body>
 </html>

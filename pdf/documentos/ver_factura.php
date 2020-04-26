@@ -21,7 +21,7 @@
 	}
 	$sql_factura=mysqli_query($con,"select * from facturas where id_factura='".$id_factura."'");
 	$rw_factura=mysqli_fetch_array($sql_factura);
-	$numero_factura=$rw_factura['numero_factura'];
+	$numero_factura=$rw_factura['id_factura'];
 	$id_cliente=$rw_factura['id_cliente'];
 	$id_vendedor=$rw_factura['id_vendedor'];
 	$fecha_factura=$rw_factura['fecha_factura'];

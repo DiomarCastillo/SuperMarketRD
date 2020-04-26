@@ -80,6 +80,7 @@
 			  <table class="table">
 				<tr  class="info">
 					<th>Nombre</th>
+					<th>Cedula</th>
 					<th>Teléfono</th>
 					<th>Email</th>
 					<th>Dirección</th>
@@ -92,6 +93,7 @@
 				while ($row=mysqli_fetch_array($query)){
 						$id_cliente=$row['id_cliente'];
 						$nombre_cliente=$row['nombre_cliente'];
+						$cedula_cliente=$row['cedula_cliente'];
 						$telefono_cliente=$row['telefono_cliente'];
 						$email_cliente=$row['email_cliente'];
 						$direccion_cliente=$row['direccion_cliente'];
@@ -103,6 +105,7 @@
 					?>
 					
 					<input type="hidden" value="<?php echo $nombre_cliente;?>" id="nombre_cliente<?php echo $id_cliente;?>">
+					<input type="hidden" value="<?php echo $cedula_cliente;?>" id="cedula_cliente<?php echo $id_cliente;?>">
 					<input type="hidden" value="<?php echo $telefono_cliente;?>" id="telefono_cliente<?php echo $id_cliente;?>">
 					<input type="hidden" value="<?php echo $email_cliente;?>" id="email_cliente<?php echo $id_cliente;?>">
 					<input type="hidden" value="<?php echo $direccion_cliente;?>" id="direccion_cliente<?php echo $id_cliente;?>">
@@ -111,6 +114,7 @@
 					<tr>
 						
 						<td><?php echo $nombre_cliente; ?></td>
+						<td><?php echo $cedula_cliente; ?></td>
 						<td ><?php echo $telefono_cliente; ?></td>
 						<td><?php echo $email_cliente;?></td>
 						<td><?php echo $direccion_cliente;?></td>

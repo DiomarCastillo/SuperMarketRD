@@ -1,20 +1,20 @@
 <?php
-	
+
 include('is_logged.php');//Archivo verifica que el usario que intenta acceder a la URL esta logueado
-$id_compra= $_SESSION['id_compra'];
+$id_factura= $_SESSION['id_compra'];
 $numero_compra= $_SESSION['numero_compra'];
 if (isset($_POST['id'])){$id=intval($_POST['id']);}
 if (isset($_POST['cantidad'])){$cantidad=intval($_POST['cantidad']);}
-if (isset($_POST['precio_venta'])){$precio_venta=floatval($_POST['precio_venta']);}
+if (isset($_POST['precio_compra'])){$precio_compra=floatval($_POST['precio_compra']);}
 
 	/* Connect To Database*/
 	require_once ("../config/db.php");//Contiene las variables de configuracion para conectar a la base de datos
 	require_once ("../config/conexion.php");//Contiene funcion que conecta a la base de datos
 	//Archivo de funciones PHP
 	include("../funciones.php");
-if (!empty($id) and !empty($cantidad) and !empty($precio_venta))
+if (!empty($id) and !empty($cantidad) and !empty($precio_compra))
 {
-$insert_tmp=mysqli_query($con, "INSERT INTO detalle_compra (numero_compra, id_producto,cantidad,precio_venta) VALUES ('$numero_compra','$id','$cantidad','$precio_venta')");
+$insert_tmp=mysqli_query($con, "INSERT INTO detalle_compra (numero_compra, id_producto,cantidad,precio_compra) VALUES ('$numero_compra','$id','$cantidad','$precio_compra')");
 
 }
 if (isset($_GET['id']))//codigo elimina un elemento del array
@@ -39,12 +39,12 @@ $simbolo_moneda="$";
 	while ($row=mysqli_fetch_array($sql))
 	{
 	$id_detalle=$row["id_detalle"];
-	$codigo_producto=$row['id_producto'];
+	$codigo_producto=$row['codigo_producto'];
 	$cantidad=$row['cantidad'];
 	$nombre_producto=$row['nombre_producto'];
 	
 	
-	$precio_venta=$row['precio_venta'];
+	$precio_venta=$row['precio_compra'];
 	$precio_venta_f=number_format($precio_venta,2);//Formateo variables
 	$precio_venta_r=str_replace(",","",$precio_venta_f);//Reemplazo las comas
 	$precio_total=$precio_venta_r*$cantidad;
@@ -68,7 +68,7 @@ $simbolo_moneda="$";
 	$total_itbis=($subtotal * $impuesto )/100;
 	$total_itbis=number_format($total_itbis,2,'.','');
 	$total_compra=$subtotal+$total_itbis;
-	$update=mysqli_query($con,"update compras set total_venta='$total_compra' where id_compra='$id_compra'");
+	$update=mysqli_query($con,"update compras set total_compra='$total_compra' where id_compra='$id_compra'");
 ?>
 <tr>
 	<td class='text-right' colspan=4>SUBTOTAL <?php echo $simbolo_moneda;?></td>

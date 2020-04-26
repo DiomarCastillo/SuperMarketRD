@@ -1,5 +1,6 @@
 <?php
 
+	session_start();
 	if (!isset($_SESSION['user_login_status']) AND $_SESSION['user_login_status'] != 1) {
         header("location: ../../login.php");
 		exit;
@@ -16,7 +17,7 @@
 	$count=mysqli_num_rows($sql_count);
 	if ($count==0)
 	{
-	echo "<script>alert('No hay productos agregados a la compra')</script>";
+	echo "<script>alert('No hay productos agregados a la factura')</script>";
 	echo "<script>window.close();</script>";
 	exit;
 	}
@@ -46,8 +47,9 @@
         $html2pdf->pdf->SetDisplayMode('fullpage');
         // convert
         $html2pdf->writeHTML($content, isset($_GET['vuehtml']));
-        // send the PDF
-        $html2pdf->Output('compra.pdf');
+		// send the PDF
+		ob_end_clean();
+        $html2pdf->Output('Compra.pdf');
     }
     catch(HTML2PDF_exception $e) {
         echo $e;

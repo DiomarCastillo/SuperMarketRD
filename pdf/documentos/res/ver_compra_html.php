@@ -56,7 +56,7 @@ table.page_footer {width: 100%; border: none; background-color: white; padding: 
 	
     <table cellspacing="0" style="width: 100%; text-align: left; font-size: 11pt;">
         <tr>
-           <td style="width:50%;" class='midnight-blue'>compraR A</td>
+           <td style="width:50%;" class='midnight-blue'>FACTURAR A</td>
         </tr>
 		<tr>
            <td style="width:50%;" >
@@ -130,7 +130,7 @@ while ($row=mysqli_fetch_array($sql))
 	$cantidad=$row['cantidad'];
 	$nombre_producto=$row['nombre_producto'];
 	
-	$precio_venta=$row['precio_venta'];
+	$precio_venta=$row['precio_compra'];
 	$precio_venta_f=number_format($precio_venta,2);//Formateo variables
 	$precio_venta_r=str_replace(",","",$precio_venta_f);//Reemplazo las comas
 	$precio_total=$precio_venta_r*$cantidad;
@@ -165,14 +165,14 @@ while ($row=mysqli_fetch_array($sql))
 ?>
 	  
         <tr>
-            <td colspan="3" style="widtd: 85%; text-align: right;">SUBTOTAL <?php echo "$";?> </td>
+            <td colspan="3" style="widtd: 85%; text-align: right;">SUBTOTAL <?php echo $simbolo_moneda;?> </td>
             <td style="widtd: 15%; text-align: right;"> <?php echo number_format($subtotal,2);?></td>
         </tr>
 		<tr>
-            <td colspan="3" style="widtd: 85%; text-align: right;">ITBIS (<?php echo $impuesto;?>)% <?php echo "$";?> </td>
+            <td colspan="3" style="widtd: 85%; text-align: right;">ITBIS (<?php echo $impuesto;?>)% <?php echo $simbolo_moneda;?> </td>
             <td style="widtd: 15%; text-align: right;"> <?php echo number_format($total_itbis,2);?></td>
         </tr><tr>
-            <td colspan="3" style="widtd: 85%; text-align: right;">TOTAL <?php echo "$";?> </td>
+            <td colspan="3" style="widtd: 85%; text-align: right;">TOTAL <?php echo $simbolo_moneda;?> </td>
             <td style="widtd: 15%; text-align: right;"> <?php echo number_format($total_compra,2);?></td>
         </tr>
     </table>

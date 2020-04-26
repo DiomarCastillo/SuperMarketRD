@@ -5,7 +5,7 @@
 	if (empty($_POST['id_proveedor'])) {
            $errors[] = "ID vacío";
         }else if (empty($_POST['id_vendedor'])) {
-           $errors[] = "Selecciona el vendedor";
+           $errors[] = "Selecciona el Comprador";
         } else if (empty($_POST['condiciones'])){
 			$errors[] = "Selecciona forma de pago";
 		} else if ($_POST['estado_compra']==""){
