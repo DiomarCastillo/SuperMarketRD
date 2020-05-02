@@ -1,5 +1,5 @@
 <?php
-
+    $err = isset($_GET['error']) ? $_GET['error'] : null ; 
 	session_start();
 	if (!isset($_SESSION['user_login_status']) AND $_SESSION['user_login_status'] != 1) {
         header("location: login.php");
@@ -97,6 +97,7 @@ $( "#guardar_producto" ).submit(function( event ) {
 			success: function(datos){
 			$("#resultados_ajax_productos").html(datos);
 			$('#guardar_datos').attr("disabled", false);
+			$("#guardar_producto")[0].reset();
 			load(1);
 		  }
 	});
@@ -117,6 +118,7 @@ $( "#editar_producto" ).submit(function( event ) {
 			success: function(datos){
 			$("#resultados_ajax2").html(datos);
 			$('#actualizar_datos').attr("disabled", false);
+			$("#editar_producto")[0].reset();
 			load(1);
 		  }
 	});

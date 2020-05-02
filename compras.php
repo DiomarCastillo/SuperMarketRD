@@ -1,18 +1,22 @@
 <?php
-	
+	$err = isset($_GET['error']) ? $_GET['error'] : null ; 
 	session_start();
 	if (!isset($_SESSION['user_login_status']) AND $_SESSION['user_login_status'] != 1) {
         header("location: login.php");
 		exit;
         }
-	
+		$rol= $_SESSION['cargo'];
+		if($rol=="cajero"){
+		header('Location: http://localhost/simple-invoice-master/facturas.php?error=3');
+ }
 	$active_facturas="";
 	$active_productos="";
 	$active_clientes="";
 	$active_usuarios="";	
 	$active_compras="active";
-
-	$title="Compras | SupermarketRD";
+	$active_reportes="";
+	$active_proveedores="";
+	$title="Compras | SuperMarketRD";
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -50,9 +54,6 @@
 							</div>
 							
 						</div>
-				
-				
-				
 			</form>
 				<div id="resultados"></div><!-- Carga los datos ajax -->
 				<div class='outer_div'></div><!-- Carga los datos ajax -->

@@ -1,10 +1,16 @@
 <?php
-
+    $err = isset($_GET['error']) ? $_GET['error'] : null ; 
 	session_start();
 	if (!isset($_SESSION['user_login_status']) AND $_SESSION['user_login_status'] != 1) {
         header("location: login.php");
 		exit;
-        }
+		}
+		
+		$rol= $_SESSION['cargo'];
+		if($rol!="admin"){
+		header('Location: http://localhost/simple-invoice-master/facturas.php?error=3');
+ }
+
 
 	/* Connect To Database*/
 	require_once ("config/db.php");//Contiene las variables de configuracion para conectar a la base de datos
@@ -73,13 +79,15 @@
                       <tr>
                         <td>Correo electrónico:</td>
                         <td><input type="email" class="form-control input-sm" name="email" value="<?php echo $row['email']?>" ></td>
+					  </tr>
+					  <tr>
+                        <td>RNC:</td>
+                        <td><input type="text" class="form-control input-sm" name="rnc" value="<?php echo $row["rnc"];?>" required></td>
                       </tr>
 					  <tr>
                         <td>ITBIS (%):</td>
                         <td><input type="text" class="form-control input-sm" required name="impuesto" value="<?php echo $row['impuesto']?>"></td>
                       </tr>
-					  
-				
 					  <tr>
                         <td>Dirección:</td>
                         <td><input type="text" class="form-control input-sm" name="direccion" value="<?php echo $row["direccion"];?>" required></td>

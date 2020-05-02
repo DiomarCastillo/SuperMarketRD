@@ -1,5 +1,6 @@
 <?php
-
+	$err = isset($_GET['error']) ? $_GET['error'] : null ; 
+	
 	session_start();
 	if (!isset($_SESSION['user_login_status']) AND $_SESSION['user_login_status'] != 1) {
         header("location: login.php");
@@ -16,6 +17,8 @@
 	$title="Facturas | SuperMarketRD";
 ?>
 <!DOCTYPE html>
+<script src="js/sweetalert2.min.js"></script>
+<link rel="stylesheet" href="css/sweetalert2.min.css">
 <html lang="en">
   <head>
 	<?php include("head.php");?>
@@ -24,6 +27,7 @@
   <body>
 	<?php
 	include("navbar.php");
+	
 	?>  
     <div class="container">
 		<div class="panel panel-info">
@@ -53,7 +57,19 @@
 						</div>
 				
 				
-				
+
+		<?php 
+	        if($err==3){
+				echo "
+				<script>
+				Swal.fire({
+				icon: 'error',
+				title: 'No tiene Autorizacion para esa seccion',
+				showConfirmButton: false,
+				timer: 2000})
+				</script>";
+			}?>		
+
 			</form>
 				<div id="resultados"></div><!-- Carga los datos ajax -->
 				<div class='outer_div'></div><!-- Carga los datos ajax -->

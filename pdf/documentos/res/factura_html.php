@@ -44,7 +44,7 @@ table.page_footer {width: 100%; border: none; background-color: white; padding: 
                     P&aacute;gina [[page_cu]]/[[page_nb]]
                 </td>
                 <td style="width: 50%; text-align: right">
-                    &copy; <?php echo "obedalvarado.pw "; echo  $anio=date('Y'); ?>
+                    &copy; <?php echo "SuperMarketRD"; echo  $anio=date('Y'); ?>
                 </td>
             </tr>
         </table>
@@ -72,6 +72,8 @@ table.page_footer {width: 100%; border: none; background-color: white; padding: 
 				echo $rw_cliente['telefono_cliente'];
 				echo "<br> Email: ";
 				echo $rw_cliente['email_cliente'];
+				echo "<br> RNC: ";
+				echo $rw_cliente['rnc_cliente'];
 			?>
 			
 		   </td>

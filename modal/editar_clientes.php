@@ -20,6 +20,18 @@
 					<input type="hidden" name="mod_id" id="mod_id">
 				</div>
 			  </div>
+			  <div class="form-group">
+				<label for="mod_cedula" class="col-sm-3 control-label">Cedula</label>
+				<div class="col-sm-8">
+				  <input type="text" class="form-control" id="mod_cedula" name="mod_cedula"  required>	
+				</div>
+			  </div>
+			  <div class="form-group">
+				<label for="mod_rnc" class="col-sm-3 control-label">Rnc</label>
+				<div class="col-sm-8">
+				  <input type="text" class="form-control" id="mod_rnc" name="mod_rnc">	
+				</div>
+		      </div>
 			   <div class="form-group">
 				<label for="mod_telefono" class="col-sm-3 control-label">Teléfono</label>
 				<div class="col-sm-8">

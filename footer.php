@@ -1,7 +1,7 @@
 <div class="navbar navbar-default navbar-fixed-bottom">
     <div class="container">
-      <p class="navbar-text pull-left">&copy <?php echo date('Y');?> - Diomar Castillo.
-           <a href="http://obedalvarado.pw/" target="_blank" style="color: #ecf0f1">SuperMarketRD</a>
+      <p class="navbar-text pull-left">&copy <?php echo date('Y');?> &nbsp;| &nbsp;<?php echo $_SESSION['user_name'];?>&nbsp;|
+           <a style="color: #ecf0f1">SuperMarketRD</a>
       </p>
    </div>
 </div>

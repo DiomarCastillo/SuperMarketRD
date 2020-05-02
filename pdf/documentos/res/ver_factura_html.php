@@ -72,6 +72,8 @@ table.page_footer {width: 100%; border: none; background-color: white; padding: 
 				echo $rw_cliente['telefono_cliente'];
 				echo "<br> Email: ";
 				echo $rw_cliente['email_cliente'];
+				echo "<br> RNC: ";
+				echo $rw_cliente['rnc_cliente'];
 			?>
 			
 		   </td>

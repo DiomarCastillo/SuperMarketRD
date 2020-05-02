@@ -80,6 +80,7 @@
 			  <table class="table">
 				<tr  class="info">
 					<th>Nombre</th>
+					<th>RNC</th>
 					<th>Teléfono</th>
 					<th>Email</th>
 					<th>Dirección</th>
@@ -89,6 +90,7 @@
 				while ($row=mysqli_fetch_array($query)){
 						$id_proveedor=$row['id_proveedor'];
 						$nombre_proveedor=$row['nombre_proveedor'];
+						$rnc_proveedor=$row['rnc_proveedor'];
 						$telefono_proveedor=$row['telefono_proveedor'];
 						$email_proveedor=$row['email_proveedor'];
 						$direccion_proveedor=$row['direccion_proveedor'];
@@ -96,6 +98,7 @@
 					?>
 					
 					<input type="hidden" value="<?php echo $nombre_proveedor;?>" id="nombre_proveedor<?php echo $id_proveedor;?>">
+					<input type="hidden" value="<?php echo $rnc_proveedor;?>" id="rnc_proveedor<?php echo $id_proveedor;?>">
 					<input type="hidden" value="<?php echo $telefono_proveedor;?>" id="telefono_proveedor<?php echo $id_proveedor;?>">
 					<input type="hidden" value="<?php echo $email_proveedor;?>" id="email_proveedor<?php echo $id_proveedor;?>">
 					<input type="hidden" value="<?php echo $direccion_proveedor;?>" id="direccion_proveedor<?php echo $id_proveedor;?>">
@@ -103,6 +106,7 @@
 					<tr>
 						
 						<td><?php echo $nombre_proveedor; ?></td>
+						<td ><?php echo $rnc_proveedor; ?></td>
 						<td ><?php echo $telefono_proveedor; ?></td>
 						<td><?php echo $email_proveedor;?></td>
 						<td><?php echo $direccion_proveedor;?></td>	

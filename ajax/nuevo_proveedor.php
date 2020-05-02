@@ -9,11 +9,12 @@
 		require_once ("../config/conexion.php");//Contiene funcion que conecta a la base de datos
 		// escaping, additionally removing everything that could be (html/javascript-) code
 		$nombre=mysqli_real_escape_string($con,(strip_tags($_POST["nombre"],ENT_QUOTES)));
+		$rnc=mysqli_real_escape_string($con,(strip_tags($_POST["rnc"],ENT_QUOTES)));
 		$telefono=mysqli_real_escape_string($con,(strip_tags($_POST["telefono"],ENT_QUOTES)));
 		$email=mysqli_real_escape_string($con,(strip_tags($_POST["email"],ENT_QUOTES)));
 		$direccion=mysqli_real_escape_string($con,(strip_tags($_POST["direccion"],ENT_QUOTES)));
-		$sql="INSERT INTO proveedores (nombre_proveedor, telefono_proveedor, email_proveedor, direccion_proveedor)
-		 VALUES ('$nombre','$telefono','$email','$direccion')";
+		$sql="INSERT INTO proveedores (nombre_proveedor, rnc_proveedor, telefono_proveedor, email_proveedor, direccion_proveedor)
+		 VALUES ('$nombre', '$rnc','$telefono','$email','$direccion')";
 		$query_new_insert = mysqli_query($con,$sql);
 			if ($query_new_insert){
 				$messages[] = "proveedor ha sido ingresado satisfactoriamente.";

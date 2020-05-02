@@ -11,9 +11,12 @@ if (isset($_POST['precio_venta'])){$precio_venta=$_POST['precio_venta'];}
 	require_once ("../config/conexion.php");//Contiene funcion que conecta a la base de datos
 	//Archivo de funciones PHP
 	include("../funciones.php");
+	$venta="CALL venta('$id','$cantidad')";
+	$sql=mysqli_query($con,$venta);
 if (!empty($id) and !empty($cantidad) and !empty($precio_venta))
 {
-$insert_tmp=mysqli_query($con, "INSERT INTO tmp (id_producto,cantidad_tmp,precio_tmp,session_id) VALUES ('$id','$cantidad','$precio_venta','$session_id')");
+$insert_tmp=mysqli_query($con, "INSERT INTO tmp (id_producto,cantidad_tmp,precio_tmp,session_id)
+ VALUES ('$id','$cantidad','$precio_venta','$session_id')");
 
 }
 if (isset($_GET['id']))//codigo elimina un elemento del array
@@ -51,6 +54,7 @@ $simbolo_moneda= "$";
 	$precio_total_r=str_replace(",","",$precio_total_f);//Reemplazo las comas
 	$sumador_total+=$precio_total_r;//Sumador
 	
+	
 		?>
 		<tr>
 			<td class='text-center'><?php echo $codigo_producto;?></td>
@@ -84,5 +88,7 @@ $simbolo_moneda= "$";
 	<td class='text-right'><?php echo number_format($total_factura,2);?></td>
 	<td></td>
 </tr>
+
+
 
 </table>

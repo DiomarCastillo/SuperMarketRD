@@ -33,6 +33,12 @@
 				</div>
 			  </div>
 			  <div class="form-group">
+				<label for="cargo2" class="col-sm-3 control-label">Cargo</label>
+				<div class="col-sm-8">
+				  <input type="text" class="form-control" id="cargo2" name="cargo2" placeholder="Cargo" required>
+				</div>
+			  </div>
+			  <div class="form-group">
 				<label for="user_email2" class="col-sm-3 control-label">Email</label>
 				<div class="col-sm-8">
 				  <input type="email" class="form-control" id="user_email2" name="user_email2" placeholder="Correo electrónico" required>

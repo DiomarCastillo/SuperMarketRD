@@ -1,11 +1,11 @@
 <?php
 	include('is_logged.php');//Archivo verifica que el usario que intenta acceder a la URL esta logueado
-	$id_compra= $_SESSION['id_compra'];
+	$id_factura= $_SESSION['id_compra'];
 	/*Inicia validacion del lado del servidor*/
 	if (empty($_POST['id_proveedor'])) {
            $errors[] = "ID vacío";
         }else if (empty($_POST['id_vendedor'])) {
-           $errors[] = "Selecciona el Comprador";
+           $errors[] = "Selecciona el vendedor";
         } else if (empty($_POST['condiciones'])){
 			$errors[] = "Selecciona forma de pago";
 		} else if ($_POST['estado_compra']==""){
@@ -20,16 +20,16 @@
 		require_once ("../config/db.php");//Contiene las variables de configuracion para conectar a la base de datos
 		require_once ("../config/conexion.php");//Contiene funcion que conecta a la base de datos
 		// escaping, additionally removing everything that could be (html/javascript-) code
-		$id_proveedor=intval($_POST['id_proveedor']);
+		$id_cliente=intval($_POST['id_proveedor']);
 		$id_vendedor=intval($_POST['id_vendedor']);
 		$condiciones=intval($_POST['condiciones']);
 
-		$estado_compra=intval($_POST['estado_compra']);
+		$estado_factura=intval($_POST['estado_compra']);
 		
-		$sql="UPDATE compras SET id_proveedor='".$id_proveedor."', id_vendedor='".$id_vendedor."', condiciones='".$condiciones."', estado_compra='".$estado_compra."' WHERE id_compra='".$id_compra."'";
+		$sql="UPDATE compras SET id_proveedor='".$id_cliente."', id_vendedor='".$id_vendedor."', condiciones='".$condiciones."', estado_compra='".$estado_factura."' WHERE id_compra='".$id_factura."'";
 		$query_update = mysqli_query($con,$sql);
 			if ($query_update){
-				$messages[] = "compra ha sido actualizada satisfactoriamente.";
+				$messages[] = "Compra ha sido actualizada satisfactoriamente.";
 			} else{
 				$errors []= "Lo siento algo ha salido mal intenta nuevamente.".mysqli_error($con);
 			}

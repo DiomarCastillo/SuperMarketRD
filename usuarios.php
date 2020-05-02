@@ -1,10 +1,15 @@
 <?php
-	
+	$err = isset($_GET['error']) ? $_GET['error'] : null ; 
 	session_start();
 	if (!isset($_SESSION['user_login_status']) AND $_SESSION['user_login_status'] != 1) {
         header("location: login.php");
 		exit;
-        }
+		}
+		$rol= $_SESSION['cargo'];
+		if($rol!="admin"){
+		header('Location: http://localhost/simple-invoice-master/facturas.php?error=3');
+ }
+
 
 	/* Connect To Database*/
 	require_once ("config/db.php");//Contiene las variables de configuracion para conectar a la base de datos
@@ -96,6 +101,7 @@ $( "#guardar_usuario" ).submit(function( event ) {
 			success: function(datos){
 			$("#resultados_ajax").html(datos);
 			$('#guardar_datos').attr("disabled", false);
+			$("#guardar_usuario")[0].reset();
 			load(1);
 		  }
 	});
@@ -149,12 +155,14 @@ $( "#editar_password" ).submit(function( event ) {
 			var nombres = $("#nombres"+id).val();
 			var apellidos = $("#apellidos"+id).val();
 			var usuario = $("#usuario"+id).val();
+			var cargo = $("#cargo"+id).val();
 			var email = $("#email"+id).val();
 			
 			$("#mod_id").val(id);
 			$("#firstname2").val(nombres);
 			$("#lastname2").val(apellidos);
 			$("#user_name2").val(usuario);
+			$("#cargo2").val(cargo);
 			$("#user_email2").val(email);
 			
 		}

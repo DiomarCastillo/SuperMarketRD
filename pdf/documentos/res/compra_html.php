@@ -44,7 +44,7 @@ table.page_footer {width: 100%; border: none; background-color: white; padding: 
                     P&aacute;gina [[page_cu]]/[[page_nb]]
                 </td>
                 <td style="width: 50%; text-align: right">
-                    &copy; <?php echo "obedalvarado.pw "; echo  $anio=date('Y'); ?>
+                    &copy; <?php echo "SuperMarketRD"; echo  $anio=date('Y'); ?>
                 </td>
             </tr>
         </table>
@@ -70,6 +70,8 @@ table.page_footer {width: 100%; border: none; background-color: white; padding: 
 				echo $rw_proveedor['telefono_proveedor'];
 				echo "<br> Email: ";
 				echo $rw_proveedor['email_proveedor'];
+				echo "<br> RNC: ";
+				echo $rw_proveedor['rnc_proveedor'];
 			?>
 			
 		   </td>
@@ -81,7 +83,7 @@ table.page_footer {width: 100%; border: none; background-color: white; padding: 
        <br>
 		<table cellspacing="0" style="width: 100%; text-align: left; font-size: 11pt;">
         <tr>
-           <td style="width:35%;" class='midnight-blue'>COMPRADO</td>
+           <td style="width:35%;" class='midnight-blue'>COMPRADOR</td>
 		  <td style="width:25%;" class='midnight-blue'>FECHA</td>
 		   <td style="width:40%;" class='midnight-blue'>FORMA DE PAGO</td>
         </tr>

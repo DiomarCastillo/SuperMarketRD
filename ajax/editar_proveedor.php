@@ -7,18 +7,20 @@
            $errors[] = "Nombre vacío";
         }   else if (
 			!empty($_POST['mod_id']) &&
-			!empty($_POST['mod_nombre']) && 
+			!empty($_POST['mod_nombre']) 
+			
 		){
 		/* Connect To Database*/
 		require_once ("../config/db.php");//Contiene las variables de configuracion para conectar a la base de datos
 		require_once ("../config/conexion.php");//Contiene funcion que conecta a la base de datos
 		// escaping, additionally removing everything that could be (html/javascript-) code
 		$nombre=mysqli_real_escape_string($con,(strip_tags($_POST["mod_nombre"],ENT_QUOTES)));
+		$rnc=mysqli_real_escape_string($con,(strip_tags($_POST["mod_rnc"],ENT_QUOTES)));
 		$telefono=mysqli_real_escape_string($con,(strip_tags($_POST["mod_telefono"],ENT_QUOTES)));
 		$email=mysqli_real_escape_string($con,(strip_tags($_POST["mod_email"],ENT_QUOTES)));
 		$direccion=mysqli_real_escape_string($con,(strip_tags($_POST["mod_direccion"],ENT_QUOTES)));	
 		$id_proveedor=intval($_POST['mod_id']);
-		$sql="UPDATE proovedores SET nombre_proveedor='".$nombre."', telefono_proveedor='".$telefono."', email_proveedor='".$email."', direccion_proveedor='".$direccion."' WHERE id_proveedor='".$id_proveedor."'";
+		$sql="UPDATE proveedores SET nombre_proveedor='".$nombre."', rnc_proveedor='" .$rnc."', telefono_proveedor='".$telefono."', email_proveedor='".$email."', direccion_proveedor='".$direccion."' WHERE id_proveedor='".$id_proveedor."'";
 		$query_update = mysqli_query($con,$sql);
 			if ($query_update){
 				$messages[] = "proveedor ha sido actualizado satisfactoriamente.";

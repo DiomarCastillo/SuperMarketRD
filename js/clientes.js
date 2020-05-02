@@ -55,6 +55,7 @@ $( "#guardar_cliente" ).submit(function( event ) {
 			success: function(datos){
 			$("#resultados_ajax").html(datos);
 			$('#guardar_datos').attr("disabled", false);
+			$("#guardar_cliente")[0].reset();
 			load(1);
 		  }
 	});
@@ -75,6 +76,7 @@ $( "#editar_cliente" ).submit(function( event ) {
 			success: function(datos){
 			$("#resultados_ajax2").html(datos);
 			$('#actualizar_datos').attr("disabled", false);
+			$("#editar_cliente")[0].reset();
 			load(1);
 		  }
 	});
@@ -83,12 +85,16 @@ $( "#editar_cliente" ).submit(function( event ) {
 
 	function obtener_datos(id){
 			var nombre_cliente = $("#nombre_cliente"+id).val();
+			var cedula_cliente = $("#cedula_cliente"+id).val();
+			var rnc_cliente = $("#rnc_cliente"+id).val();
 			var telefono_cliente = $("#telefono_cliente"+id).val();
 			var email_cliente = $("#email_cliente"+id).val();
 			var direccion_cliente = $("#direccion_cliente"+id).val();
 			var status_cliente = $("#status_cliente"+id).val();
 	
 			$("#mod_nombre").val(nombre_cliente);
+			$("#mod_cedula").val(cedula_cliente);
+			$("#mod_rnc").val(rnc_cliente);
 			$("#mod_telefono").val(telefono_cliente);
 			$("#mod_email").val(email_cliente);
 			$("#mod_direccion").val(direccion_cliente);

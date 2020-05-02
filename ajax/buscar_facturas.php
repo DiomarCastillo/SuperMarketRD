@@ -4,7 +4,7 @@
 	/* Connect To Database*/
 	require_once ("../config/db.php");//Contiene las variables de configuracion para conectar a la base de datos
 	require_once ("../config/conexion.php");//Contiene funcion que conecta a la base de datos
-	
+	$userid= $_SESSION['user_id'];
 	$action = (isset($_REQUEST['action'])&& $_REQUEST['action'] !=NULL)?$_REQUEST['action']:'';
 	if (isset($_GET['id'])){
 		$numero_factura=intval($_GET['id']);
@@ -30,9 +30,9 @@
 	if($action == 'ajax'){
 		// escaping, additionally removing everything that could be (html/javascript-) code
          $q = mysqli_real_escape_string($con,(strip_tags($_REQUEST['q'], ENT_QUOTES)));
-		  $sTable = "facturas, clientes, users";
+		  $sTable = "facturas, clientes ";
 		 $sWhere = "";
-		 $sWhere.=" WHERE facturas.id_cliente=clientes.id_cliente and facturas.id_vendedor=users.user_id";
+		 $sWhere.=" WHERE facturas.id_cliente=clientes.id_cliente and facturas.id_vendedor='$userid'";
 		if ( $_GET['q'] != "" )
 		{
 		$sWhere.= " and  (clientes.nombre_cliente like '%$q%' or facturas.numero_factura like '%$q%')";
@@ -65,7 +65,6 @@
 					<th>#</th>
 					<th>Fecha</th>
 					<th>Cliente</th>
-					<th>Vendedor</th>
 					<th>Estado</th>
 					<th class='text-right'>Total</th>
 					<th class='text-right'>Acciones</th>
@@ -79,7 +78,6 @@
 						$nombre_cliente=$row['nombre_cliente'];
 						$telefono_cliente=$row['telefono_cliente'];
 						$email_cliente=$row['email_cliente'];
-						$nombre_vendedor=$row['firstname']." ".$row['lastname'];
 						$estado_factura=$row['estado_factura'];
 						if ($estado_factura==1){$text_estado="Pagada";$label_class='label-success';}
 						else{$text_estado="Pendiente";$label_class='label-warning';}
@@ -89,7 +87,6 @@
 						<td><?php echo $numero_factura; ?></td>
 						<td><?php echo $fecha; ?></td>
 						<td><a href="#" data-toggle="tooltip" data-placement="top" title="<i class='glyphicon glyphicon-phone'></i> <?php echo $telefono_cliente;?><br><i class='glyphicon glyphicon-envelope'></i>  <?php echo $email_cliente;?>" ><?php echo $nombre_cliente;?></a></td>
-						<td><?php echo $nombre_vendedor; ?></td>
 						<td><span class="label <?php echo $label_class;?>"><?php echo $text_estado; ?></span></td>
 						<td class='text-right'><?php echo number_format ($total_venta,2); ?></td>					
 					<td class="text-right">
