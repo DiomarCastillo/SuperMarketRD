@@ -8,7 +8,7 @@
 		
 		$rol= $_SESSION['cargo'];
 		if($rol!="admin"){
-		header('Location: http://localhost/simple-invoice-master/facturas.php?error=3');
+		header('Location: http://localhost/SuperMarketRD/facturas.php?error=3');
  }
 
 
