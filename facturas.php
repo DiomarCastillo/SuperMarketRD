@@ -64,7 +64,7 @@
 				<script>
 				Swal.fire({
 				icon: 'error',
-				title: 'No tiene Autorizacion para esa seccion',
+				title: 'No tiene Permiso para acceder a esta seccion',
 				showConfirmButton: false,
 				timer: 2000})
 				</script>";

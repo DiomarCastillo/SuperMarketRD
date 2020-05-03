@@ -12,7 +12,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#">SuperMarketRD</a>
+      <a class="navbar-brand" href="main.php">SuperMarketRD</a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
